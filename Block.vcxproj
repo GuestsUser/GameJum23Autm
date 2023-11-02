@@ -24,6 +24,7 @@
     <ClCompile Include="Code\Scene\Game.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\ConstVal.h" />
     <ClInclude Include="Code\SceneManager.h" />
     <ClInclude Include="Code\Scene\Scene.h" />
     <ClInclude Include="Code\Scene\Game.h" />
