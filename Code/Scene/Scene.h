@@ -1,5 +1,5 @@
 #pragma once
-#include "../Object.h"
+#include "Charactor/Charactor.h"
 #include <vector>
 
 class Scene { //このクラスを継承してシーン処理をUpdateに、描写処理をDrawに定義する
@@ -21,5 +21,5 @@ public:
 
 private:
 	Scene* next; //シーン遷移する場合次シーン実体、そのままの場合自身、ウィンドウを閉じる場合nullptrが入る
-	std::vector<Object> scene_objects;
+	std::vector<Charactor*> scene_objects;
 };
