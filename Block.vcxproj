@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Charactor\Charactor.cpp" />
+    <ClCompile Include="Code\Charactor\Player.cpp" />
     <ClCompile Include="Code\Collision.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\OriginMath.cpp" />
@@ -32,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Charactor\Charactor.h" />
+    <ClInclude Include="Code\Charactor\Player.h" />
     <ClInclude Include="Code\Collision.h" />
     <ClInclude Include="Code\ConstVal.h" />
     <ClInclude Include="Code\OriginMath.h" />
