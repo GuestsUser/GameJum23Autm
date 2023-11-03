@@ -1,5 +1,18 @@
 #include "SceneManager.h"
 #include "./Scene/Scene.h"
+#include "SceneAccessor.h"
+
+SceneManager::SceneManager(Scene* ini)
+	:run(ini)
+{
+	SceneAccessor::Initialize(ini);
+	accessor_insctance = SceneAccessor::GetInstance();
+}
+
+SceneManager::~SceneManager()
+{
+
+}
 
 bool SceneManager::Update() {
 	//while (true) { //移行後のシーンも一度はupdateを呼び出す為ループ仕様
@@ -18,6 +31,7 @@ bool SceneManager::Update() {
 
 		delete run; //移行を命令されたら現在シーンの削除
 		run = next; //実行するシーンを次回の物に更新
+		accessor_insctance->SetCurrentScene(run);	//	アクセサのシーンを更新
 		if (run == nullptr) { return false; } //次回の物に何も入ってなかった場合ウィンドウを閉じる命令を通知する
 	}
 	return true; //Drawに処理を移す

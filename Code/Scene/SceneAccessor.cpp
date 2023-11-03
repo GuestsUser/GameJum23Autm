@@ -12,6 +12,11 @@ SceneAccessor::~SceneAccessor()
 
 }
 
+void SceneAccessor::SetCurrentScene(Scene* _active_scene)
+{
+	active_scene = _active_scene;
+}
+
 void SceneAccessor::Initialize(Scene* _active_scene)
 {
 	if (instance == nullptr)
