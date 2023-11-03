@@ -20,20 +20,28 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Charactor\Charactor.cpp" />
-    <ClCompile Include="Code\Charactor\Shoot.cpp" />
+    <ClCompile Include="Code\Collision.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\OriginMath.cpp" />
     <ClCompile Include="Code\SceneManager.cpp" />
     <ClCompile Include="Code\Scene\Game.cpp" />
+    <ClCompile Include="Code\SoundManager\SoundManager.cpp" />
+    <ClCompile Include="Code\Scene\SceneAccessor.cpp" />
+    <ClCompile Include="Code\Scene\Score.cpp" />
+    <ClCompile Include="Code\Worldval.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Charactor\Charactor.h" />
-    <ClInclude Include="Code\Charactor\Shoot.h" />
+    <ClInclude Include="Code\Collision.h" />
     <ClInclude Include="Code\ConstVal.h" />
     <ClInclude Include="Code\OriginMath.h" />
     <ClInclude Include="Code\SceneManager.h" />
     <ClInclude Include="Code\Scene\Scene.h" />
     <ClInclude Include="Code\Scene\Game.h" />
+    <ClInclude Include="Code\SoundManager\SoundManager.h" />
+    <ClInclude Include="Code\Scene\SceneAccessor.h" />
+    <ClInclude Include="Code\Scene\Score.h" />
+    <ClInclude Include="Code\Worldval.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -140,7 +148,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Code\Scene\Charactor;$(SolutionDir)Code\Scene;$(SolutionDir)Code;$(SolutionDir)dxlib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Code\Charactor;$(SolutionDir)Code\Scene;$(SolutionDir)Code;$(SolutionDir)dxlib</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
@@ -157,7 +165,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Code\Scene\Charactor;$(SolutionDir)Code\Scene;$(SolutionDir)Code;$(SolutionDir)dxlib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Code\Charactor;$(SolutionDir)Code\Scene;$(SolutionDir)Code;$(SolutionDir)dxlib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
