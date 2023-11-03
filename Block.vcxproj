@@ -25,6 +25,8 @@
     <ClCompile Include="Code\OriginMath.cpp" />
     <ClCompile Include="Code\SceneManager.cpp" />
     <ClCompile Include="Code\Scene\Game.cpp" />
+    <ClCompile Include="Code\SoundManager\SoundManager.cpp" />
+    <ClCompile Include="Code\Scene\SceneAccessor.cpp" />
     <ClCompile Include="Code\Scene\Score.cpp" />
     <ClCompile Include="Code\Worldval.cpp" />
   </ItemGroup>
@@ -36,6 +38,8 @@
     <ClInclude Include="Code\SceneManager.h" />
     <ClInclude Include="Code\Scene\Scene.h" />
     <ClInclude Include="Code\Scene\Game.h" />
+    <ClInclude Include="Code\SoundManager\SoundManager.h" />
+    <ClInclude Include="Code\Scene\SceneAccessor.h" />
     <ClInclude Include="Code\Scene\Score.h" />
     <ClInclude Include="Code\Worldval.h" />
   </ItemGroup>
