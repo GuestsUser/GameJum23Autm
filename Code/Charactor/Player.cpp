@@ -5,14 +5,16 @@ Player::Player() {
 	vector = new Vector3();
 	vector2 = new Vector3();
 
-	vector->SetXYZ(300, 500, 0);
-	vector2->SetXYZ(500, 500, 0);
+	vector->SetXYZ(300, 400, 0);
+	vector2->SetXYZ(500, 400, 0);
 	keep_x = 0;
 	keep_y = 0;
 	fps = 0;
 	press = 0;
 	jump_power = 20.0f;
 	jump_flg = false;
+	player_type = PlayerType::red;
+	player_state = PlayerState::alive;
 }
 
 void Player::Update() {
@@ -36,11 +38,11 @@ void Player::Jump() {
 		vector2->SetY(vector->GetY());
 		jump_power -= 0.5f;
 	}
-	if (vector->GetY() > 500) {
+	if (vector->GetY() > 400) {
 		jump_flg = false;
 		jump_power = 20.0f;
-		vector->SetY(500);
-		vector2->SetY(500);
+		vector->SetY(400);
+		vector2->SetY(400);
 	}
 
 }
@@ -73,4 +75,14 @@ void Player::Switch() {
 	vector->SetY(vector2->GetY());
 	vector2->SetX(keep_x);
 	vector2->SetY(keep_y);
+}
+
+PlayerType  Player::HitPlayerType(int type) {
+	if (type == 0)return player_type = PlayerType::red;
+	if (type == 1)return player_type = PlayerType::blue;
+}
+
+PlayerState Player::CheckPlayerState(int state) {
+	if (state == 0)return player_state = PlayerState::alive;
+	if (state == 1)return player_state = PlayerState::deth;
 }
