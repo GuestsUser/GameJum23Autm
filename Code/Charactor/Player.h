@@ -9,6 +9,7 @@ enum class PlayerType {
 enum class PlayerState {
 	alive,
 	deth,
+	jump,
 };
 
 class Player :public Charactor {
