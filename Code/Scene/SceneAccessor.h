@@ -17,7 +17,7 @@ public:
 
 	Scene* GetCurrentScene()
 	{
-		return GetCurrentScene();
+		return active_scene;
 	}
 
 private:

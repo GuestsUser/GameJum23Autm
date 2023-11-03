@@ -6,7 +6,7 @@
 
 Game::Game()
 {
-
+	CreateObject<ShotGenerator>(Vector3());
 }
 
 Game::~Game()
