@@ -5,15 +5,20 @@
 class SceneAccessor
 {
 private:
-	SceneAccessor();
+	SceneAccessor(Scene* _active_scene);
 public:
-	void Initialize();
-	SceneAccessor* GetInstance();
-	void Finalize();
+	void Initialize(Scene* _active_scene);	//©•ª‚Ì¶¬
+	static SceneAccessor* GetInstance();	//©•ª‚Ìinstance‚ğŠO•”‚ÉŒöŠJ
+	void Finalize();						//©•ª‚Ìíœ
 	~SceneAccessor();
+
+	Scene* GetCurrentScene()
+	{
+		return GetCurrentScene();
+	}
 
 private:
 	static SceneAccessor* instance;
-	std::vector<Scene*> active_scenes;
+	Scene* active_scene;
 };
 
