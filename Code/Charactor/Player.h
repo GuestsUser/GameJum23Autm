@@ -1,13 +1,10 @@
 #include"Charactor.h"
 #include"Dxlib.h"
+#include"Collision.h"
 
 #define JUMP_POWER  10.0f
 #define GROUND 400
 
-enum class PlayerType {
-	red,
-	blue,
-};
 
 enum class PlayerState {
 	alive,
@@ -19,9 +16,10 @@ class Player :public Charactor {
 private:
 	Vector3* vector;
 	Vector3* vector2;
+	Collision* collision;
 
-	PlayerType player_type;
 	PlayerState player_state;
+	Color color;
 
 	int player_img[3];
 	int player_img2[3];
@@ -47,6 +45,6 @@ public:
 	void CheckPlayerState();
 	bool GetPoint() { return get_point; }
 
-PlayerType GetPlayerType();
+
 int GetPlayerState();
 };

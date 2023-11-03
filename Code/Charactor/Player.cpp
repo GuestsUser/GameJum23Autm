@@ -1,9 +1,12 @@
 #include"Player.h"
 
 
+
 Player::Player() {
 	vector = new Vector3();
 	vector2 = new Vector3();
+
+	collision = new Collision(collision->HitCheck(), vector->GetY(), vector->GetX());
 
 	vector->SetXYZ(300, 400, 0);
 	vector2->SetXYZ(500, 400, 0);
@@ -11,7 +14,6 @@ Player::Player() {
 	press = 0;
 	jump_power = JUMP_POWER;
 	jump_flg = false;
-	player_type = PlayerType::red;
 	player_state = PlayerState::alive;
 	get_point = FALSE;
 
@@ -95,10 +97,6 @@ void Player::Switch() {
 	vector2->SetY(keep_y);
 }
 
-PlayerType  Player::GetPlayerType() {
-	return player_type;
-}
-
 int Player::GetPlayerState() {
 	if (player_state == PlayerState::alive)return 0;
 	if (player_state == PlayerState::deth)return 1;
@@ -106,10 +104,11 @@ int Player::GetPlayerState() {
 }
 
 void Player::Anim() {
-
+	
 }
 
 void Player::CheckPlayerState() {
 	if (jump_flg == true)player_state = PlayerState::jump;
 	if (jump_flg == false)player_state = PlayerState::alive;
+	if (collision->HitCheck() != nullptr)player_state = PlayerState::deth;
 }
