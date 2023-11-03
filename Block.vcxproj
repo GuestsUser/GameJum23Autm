@@ -25,6 +25,7 @@
     <ClCompile Include="Code\OriginMath.cpp" />
     <ClCompile Include="Code\SceneManager.cpp" />
     <ClCompile Include="Code\Scene\Game.cpp" />
+    <ClCompile Include="Code\Scene\Scene.cpp" />
     <ClCompile Include="Code\SoundManager\SoundManager.cpp" />
     <ClCompile Include="Code\Scene\SceneAccessor.cpp" />
     <ClCompile Include="Code\Scene\Score.cpp" />
