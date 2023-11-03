@@ -29,6 +29,7 @@
     <ClCompile Include="Code\Scene\SceneAccessor.cpp" />
     <ClCompile Include="Code\Scene\Score.cpp" />
     <ClCompile Include="Code\Worldval.cpp" />
+    <ClCompile Include="Code\Scene\Title.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Charactor\Charactor.h" />
@@ -42,6 +43,7 @@
     <ClInclude Include="Code\Scene\SceneAccessor.h" />
     <ClInclude Include="Code\Scene\Score.h" />
     <ClInclude Include="Code\Worldval.h" />
+    <ClInclude Include="Code\Scene\Title.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
