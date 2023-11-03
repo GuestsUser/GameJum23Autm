@@ -7,17 +7,17 @@ Scene::~Scene()
 
 void Scene::Update()
 {
-	for (auto iterator = scene_objects.begin(); iterator != scene_objects.end(); iterator++)
+	for (int i = 0; i < scene_objects.size(); i++) 
 	{
-		(*iterator)->Update();
+		scene_objects[i]->Update();
 	}
 }
 
 void Scene::Draw()
 {
-	for (auto iterator = scene_objects.begin(); iterator != scene_objects.end(); iterator++)
+	for (int i = 0; i < scene_objects.size(); i++)
 	{
-		(*iterator)->Draw();
+		scene_objects[i]->Draw();
 	}
 }
 

@@ -1,9 +1,11 @@
 #include "DxLib.h"
 #include "Game.h"
 
+#include "ShotGenerator.h"
+
 Game::Game()
 {
-
+	CreateObject<ShotGenerator>(Vector3());
 }
 
 Game::~Game()
