@@ -72,7 +72,7 @@ void Scene::StopUpdateAllObjects()
 {
 	for (int i = 0; i < scene_objects.size(); i++)
 	{
-		scene_objects[i]->SetIsActive(true);
+		scene_objects[i]->SetIsActive(false);
 	}
 }
 
@@ -80,6 +80,6 @@ void Scene::BeginUpdateAllObjects()
 {
 	for (int i = 0; i < scene_objects.size(); i++)
 	{
-		scene_objects[i]->SetIsActive(false);
+		scene_objects[i]->SetIsActive(true);
 	}
 }
