@@ -9,7 +9,7 @@ public:
 	void Draw()override; //–ˆƒtƒŒ[ƒ€Às‚·‚é•`ÊŠÖ”
 private:
 	int score;
-	int *highscore;
+	int high_score;
 	int count;
 };
 
