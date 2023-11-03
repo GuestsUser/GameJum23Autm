@@ -1,6 +1,9 @@
 #include "DxLib.h"
 #include "Game.h"
 
+#include "ShotGenerator.h"
+#include "Player.h"
+
 Game::Game()
 {
 

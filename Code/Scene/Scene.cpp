@@ -1,4 +1,6 @@
 #include "Scene/Scene.h"
+#include "QuickSort.h"
+#include "SceneAccessor.h"
 
 Scene::~Scene()
 {
@@ -56,4 +58,9 @@ void Scene::DestroyAllObjects()
 		delete (*iterator);
 	}
 	scene_objects.clear();
+}
+
+void Scene::SortBasedOnPriority()
+{
+	QuickSort(scene_objects, 0, (scene_objects.size() - 1));
 }

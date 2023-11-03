@@ -1,6 +1,7 @@
 #pragma once
-#include "Scene.h"
 #include <vector>
+#include "Scene.h"
+class Scene;
 
 class SceneAccessor
 {

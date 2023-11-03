@@ -30,8 +30,9 @@ bool SceneManager::Update() {
 		if (run == next) { break; } //継続だったらループ抜け
 
 		delete run; //移行を命令されたら現在シーンの削除
+		accessor_insctance->SetCurrentScene(next);	//	アクセサのシーンを更新
 		run = next; //実行するシーンを次回の物に更新
-		accessor_insctance->SetCurrentScene(run);	//	アクセサのシーンを更新
+		run->SortBasedOnPriority();//	次回のシーンの描画順を整える
 		if (run == nullptr) { return false; } //次回の物に何も入ってなかった場合ウィンドウを閉じる命令を通知する
 	}
 	return true; //Drawに処理を移す

@@ -25,6 +25,7 @@
     <ClCompile Include="Code\Collision.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\OriginMath.cpp" />
+    <ClCompile Include="Code\QuickSort.cpp" />
     <ClCompile Include="Code\SceneManager.cpp" />
     <ClCompile Include="Code\Scene\Game.cpp" />
     <ClCompile Include="Code\Scene\Scene.cpp" />
@@ -49,6 +50,7 @@
     <ClInclude Include="Code\Scene\Score.h" />
     <ClInclude Include="Code\Worldval.h" />
     <ClInclude Include="Code\Scene\Title.h" />
+    <ClInclude Include="Code\QuickSort.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
