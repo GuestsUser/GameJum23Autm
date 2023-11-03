@@ -1,7 +1,8 @@
 #pragma once
+#include "Charactor/Charactor.h"
+#include <vector>
 
 class Scene { //このクラスを継承してシーン処理をUpdateに、描写処理をDrawに定義する
-	Scene* next; //シーン遷移する場合次シーン実体、そのままの場合自身、ウィンドウを閉じる場合nullptrが入る
 public:
 	Scene() :next(this) {} //初期化時に自身を入れておく
 	virtual ~Scene() {} //継承可能なクラスはデストラクタに仮想関数指定がないと親クラスのデストラクタしか呼び出されないのでvirtual指定をしている
@@ -17,4 +18,8 @@ public:
 		return true; //成功を返す
 	}
 	Scene* GetNext() { return next; } //次シーンの取得
+
+private:
+	Scene* next; //シーン遷移する場合次シーン実体、そのままの場合自身、ウィンドウを閉じる場合nullptrが入る
+	std::vector<Charactor*> scene_objects;
 };
