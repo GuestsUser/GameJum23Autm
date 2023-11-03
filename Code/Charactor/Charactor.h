@@ -3,8 +3,8 @@
 
 enum class Color
 {
-	RED,
-	BLUE
+	RED,	//( 0 )
+	BLUE	//( 1 )
 };
 
 class Charactor { //ゲーム内に登場する最低限のキャラクター、各種キャラはこれを継承して登場させてほしい
