@@ -5,24 +5,32 @@
 
 Score::Score(int score)
 {
-	this->score = score;
-	highscore = WorldVal::Get<int>("highscore");
+	this->score = score; //現在のスコアを入れる
+	highscore = WorldVal::Get<int>("highscore");//ハイスコアを入れる
 
-	if (*highscore < score)
+	if (*highscore < score)//現在のスコアがハイスコアを越えてたら
 	{
-		WorldVal::Del("highscore");
-		WorldVal::Set("highscore", new int(score));
-		highscore = WorldVal::Get<int>("highscore");
+		WorldVal::Del("highscore");//ハイスコアを消す
+		WorldVal::Set("highscore", new int(score));//新しいハイスコアを作る
+		highscore = WorldVal::Get<int>("highscore");//ハイスコアを入れる
 	}
+	count = 0;
+	SetFontSize(50);
 }
 
 void Score::Update()
 {
+	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_A))//Aボタンが押されたとき次のシーンを入れる
+	{
+		SetNext(nullptr);
+	}
 
+	if (++count > FPS)count = 0;
 }
 
 void Score::Draw()
 {
-	DrawFormatString(WINDOW_X / 2, WINDOW_Y / 2, 0xffffff, "スコア　%d", score);
-	DrawFormatString(WINDOW_X / 2, (WINDOW_Y / 2) + 30, 0xffffff, "ハイスコア　%d", *highscore);
+	DrawFormatString(355, 100, 0xffffff, "スコア　%d", score);
+	DrawFormatString(305, 200, 0xffffff, "ハイスコア　%d", *highscore);
+	if(count > (FPS / 2))DrawString(270, 300, "Aボタンでタイトル", 0xffffff);
 }

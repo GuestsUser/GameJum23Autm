@@ -10,5 +10,6 @@ public:
 private:
 	int score;
 	int *highscore;
+	int count;
 };
 
