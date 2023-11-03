@@ -7,10 +7,12 @@ class SceneAccessor
 private:
 	SceneAccessor(Scene* _active_scene);
 public:
-	void Initialize(Scene* _active_scene);	//©•ª‚Ì¶¬
+	static void Initialize(Scene* _active_scene);	//©•ª‚Ì¶¬
 	static SceneAccessor* GetInstance();	//©•ª‚Ìinstance‚ğŠO•”‚ÉŒöŠJ
 	void Finalize();						//©•ª‚Ìíœ
 	~SceneAccessor();
+
+	void SetCurrentScene(Scene* _active_scene);
 
 	Scene* GetCurrentScene()
 	{
