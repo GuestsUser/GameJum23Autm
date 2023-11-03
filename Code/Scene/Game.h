@@ -1,8 +1,14 @@
 #pragma once
+#include "SoundManager/SoundManager.h"
 #include "Scene.h"
 class Game :public Scene { //コンパイル用空クラス
 public:
-	Game() {}
+	Game();
+	~Game();
 
-	void Update() {}
+	void Update()override;
+	void Draw()override;
+
+private:
+
 };
