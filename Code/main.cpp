@@ -7,14 +7,13 @@
 #include "DxLib.h"
 #include "ConstVal.h"
 #include "SceneManager.h"
+#include "Title.h"
 #include "Game.h"
 #include "Worldval.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); //デバッグ表示を可能にする
 	ChangeWindowMode(true);
-
-	if (DxLib_Init() == -1) { return -1; }		//初期化と異常が認められた場合の終了
 
 	int fps = 1000000 / FPS; //割る値を変えると1秒間に行う処理回数を変更できる
 	LONGLONG now = GetNowHiPerformanceCount();
@@ -25,9 +24,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetGraphMode(WINDOW_X, WINDOW_Y, 32); //画面モードの設定
 	SetBackgroundColor(0, 0, 0); //画面の背景色の設定
 	SetDrawScreen(DX_SCREEN_BACK);
+
+	if (DxLib_Init() == -1) { return -1; }		//初期化と異常が認められた場合の終了
+
 	WorldVal::SetUp();
 	WorldVal::Set("highscore", new int(0));
-	SceneManager* scm = new SceneManager(new Game()); //セレクト画面が完成したから最初に実行するシーンはタイトルに固定、其々のシーンに飛ばす処理はScene_Select.cppのswitch文を確認
+	SceneManager* scm = new SceneManager(new Title()); //セレクト画面が完成したから最初に実行するシーンはタイトルに固定、其々のシーンに飛ばす処理はScene_Select.cppのswitch文を確認
 	
 
 	while (ProcessMessage() == 0 && (!CheckHitKey(KEY_INPUT_ESCAPE))) { //GetKeyシステム使用例、backボタンが押された瞬間にfalseとなる
