@@ -7,6 +7,7 @@
 #include "DxLib.h"
 #include "ConstVal.h"
 #include "SceneManager.h"
+#include "Title.h"
 #include "Game.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -24,7 +25,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetGraphMode(WINDOW_X, WINDOW_Y, 32); //画面モードの設定
 	SetBackgroundColor(0, 0, 0); //画面の背景色の設定
 	SetDrawScreen(DX_SCREEN_BACK);
-	SceneManager* scm = new SceneManager(new Game()); //セレクト画面が完成したから最初に実行するシーンはタイトルに固定、其々のシーンに飛ばす処理はScene_Select.cppのswitch文を確認
+	SceneManager* scm = new SceneManager(new Title()); //セレクト画面が完成したから最初に実行するシーンはタイトルに固定、其々のシーンに飛ばす処理はScene_Select.cppのswitch文を確認
 	
 	while (ProcessMessage() == 0 && (!CheckHitKey(KEY_INPUT_ESCAPE))) { //GetKeyシステム使用例、backボタンが押された瞬間にfalseとなる
 		//_RPTF1(_CRT_WARN, "%s\n", "test"); //デバッグ表示
