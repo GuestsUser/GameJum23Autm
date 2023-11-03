@@ -11,10 +11,10 @@ Ui::Ui()
 
 Ui::~Ui()
 {
-	if (score > high_score)
+	if (score > high_score)//スコアがハイスコアを越えていたら
 	{
 		WorldVal::Del("highscore");//ハイスコアを消す
-		WorldVal::Set("highscore", new int(score));//新しいハイスコアを作る
+		WorldVal::Set("highscore", new int(score));//新しいハイスコアを登録
 	}
 }
 
