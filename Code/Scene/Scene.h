@@ -36,6 +36,10 @@ public:
 		//	GameObject‚Ì“o˜^
 		scene_objects.push_back(new_object);
 
+
+		//	ˆÊ’uÝ’è
+		new_object->EditPosition() = position;
+
 		return new_instance;
 
 	}

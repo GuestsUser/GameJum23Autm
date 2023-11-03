@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Code\Charactor\Charactor.cpp" />
     <ClCompile Include="Code\Charactor\Player.cpp" />
+    <ClCompile Include="Code\Charactor\Shoot.cpp" />
     <ClCompile Include="Code\Charactor\Ui.cpp" />
     <ClCompile Include="Code\Collision.cpp" />
     <ClCompile Include="Code\main.cpp" />
@@ -28,6 +29,7 @@
     <ClCompile Include="Code\SceneManager.cpp" />
     <ClCompile Include="Code\Scene\Game.cpp" />
     <ClCompile Include="Code\Scene\Scene.cpp" />
+    <ClCompile Include="Code\ShotGenerator.cpp" />
     <ClCompile Include="Code\SoundManager\SoundManager.cpp" />
     <ClCompile Include="Code\Scene\SceneAccessor.cpp" />
     <ClCompile Include="Code\Scene\Score.cpp" />
@@ -37,6 +39,7 @@
   <ItemGroup>
     <ClInclude Include="Code\Charactor\Charactor.h" />
     <ClInclude Include="Code\Charactor\Player.h" />
+    <ClInclude Include="Code\Charactor\Shoot.h" />
     <ClInclude Include="Code\Charactor\Ui.h" />
     <ClInclude Include="Code\Collision.h" />
     <ClInclude Include="Code\ConstVal.h" />
@@ -44,6 +47,7 @@
     <ClInclude Include="Code\SceneManager.h" />
     <ClInclude Include="Code\Scene\Scene.h" />
     <ClInclude Include="Code\Scene\Game.h" />
+    <ClInclude Include="Code\ShotGenerator.h" />
     <ClInclude Include="Code\SoundManager\SoundManager.h" />
     <ClInclude Include="Code\Scene\SceneAccessor.h" />
     <ClInclude Include="Code\Scene\Score.h" />
