@@ -33,14 +33,31 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	while (ProcessMessage() == 0 && (!CheckHitKey(KEY_INPUT_ESCAPE))) { //GetKeyシステム使用例、backボタンが押された瞬間にfalseとなる
 		//_RPTF1(_CRT_WARN, "%s\n", "test"); //デバッグ表示
 
-		now = GetNowHiPerformanceCount(); //現在時刻の取得
-		if (now - old > fps) { //前フレームの現在時刻との差が実行タイミングになっていた場合ゲーム処理、描写の実行
-			old = now - (now - old - fps); //差が実行タイミング以上だった場合そのままoldに現在時刻を入れると切り捨てられてしまうのでoldから実行タイミング超過分を引く事で超過分を加味した形にする
-			ClearDrawScreen(); //画面の初期化
-			if (!scm->Update()) { break; } //ウィンドウを閉じる指示を出されてたら終了
-			scm->Draw(); //画面描写
+		try
+		{
+			now = GetNowHiPerformanceCount(); //現在時刻の取得
+			if (now - old > fps) { //前フレームの現在時刻との差が実行タイミングになっていた場合ゲーム処理、描写の実行
+				old = now - (now - old - fps); //差が実行タイミング以上だった場合そのままoldに現在時刻を入れると切り捨てられてしまうのでoldから実行タイミング超過分を引く事で超過分を加味した形にする
+				ClearDrawScreen(); //画面の初期化
+				if (!scm->Update()) { break; } //ウィンドウを閉じる指示を出されてたら終了
+				scm->Draw(); //画面描写
+			}
+			ScreenFlip();
 		}
-		ScreenFlip();
+		catch (const char* error_message)
+		{
+			FILE* fp = NULL;
+
+			DATEDATA data;
+
+			GetDateTime(&data);
+			//ファイルオープン
+			fopen_s(&fp, "ErrorLog.txt", "a");
+			//エラーデータの書き込み
+			fprintf_s(fp, "%s",error_message);
+
+			return -1;
+		}
 	}
 	delete scm;
 	WorldVal::Destruct();
