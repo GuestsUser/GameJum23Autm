@@ -7,6 +7,7 @@
 #include "DxLib.h"
 #include "ConstVal.h"
 #include "SceneManager.h"
+#include "Title.h"
 #include "Game.h"
 #include "Worldval.h"
 
@@ -27,7 +28,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetDrawScreen(DX_SCREEN_BACK);
 	WorldVal::SetUp();
 	WorldVal::Set("highscore", new int(0));
-	SceneManager* scm = new SceneManager(new Game()); //セレクト画面が完成したから最初に実行するシーンはタイトルに固定、其々のシーンに飛ばす処理はScene_Select.cppのswitch文を確認
+	SceneManager* scm = new SceneManager(new Title()); //セレクト画面が完成したから最初に実行するシーンはタイトルに固定、其々のシーンに飛ばす処理はScene_Select.cppのswitch文を確認
 	
 
 	while (ProcessMessage() == 0 && (!CheckHitKey(KEY_INPUT_ESCAPE))) { //GetKeyシステム使用例、backボタンが押された瞬間にfalseとなる
