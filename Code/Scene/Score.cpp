@@ -24,7 +24,7 @@ void Score::Update()
 
 void Score::Draw()
 {
-	DrawFormatString(355, 100, 0xffffff, "スコア　%d", score);
-	DrawFormatString(305, 200, 0xffffff, "ハイスコア　%d", highscore);
+	DrawFormatString(345, 100, 0xffffff, "スコア　%03d", score);
+	DrawFormatString(290, 200, 0xffffff, "ハイスコア　%03d", highscore);
 	if(count > (FPS / 2))DrawString(270, 300, "Aボタンでタイトル", 0xffffff);
 }
