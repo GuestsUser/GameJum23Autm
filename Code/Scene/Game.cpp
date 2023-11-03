@@ -1,13 +1,22 @@
-#include"Game.h"
+#include "DxLib.h"
+#include "Game.h"
 
-Game::Game() {
-	player = new Player();
+Game::Game()
+{
+
 }
 
-void Game::Update() {
-	player->Update();
+Game::~Game()
+{
+
 }
 
-void Game::Draw() {
-	player->Draw();
+void Game::Update()
+{
+
+}
+
+void Game::Draw()
+{
+
 }
