@@ -1,6 +1,12 @@
 #pragma once
 #include "OriginMath.h"
 
+enum class Color
+{
+	RED,
+	BLUE
+};
+
 class Charactor { //ゲーム内に登場する最低限のキャラクター、各種キャラはこれを継承して登場させてほしい
 	Vector3 pos;
 public:
