@@ -42,3 +42,6 @@ Log.txt
 Block.vcxproj.filters
 Block.vcxproj.user
 *.filters
+
+#デバッグ用ファイルの除外
+ErrorLog.txt
