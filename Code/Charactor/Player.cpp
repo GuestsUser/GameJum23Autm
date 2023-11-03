@@ -13,6 +13,7 @@ Player::Player() {
 	jump_flg = false;
 	player_type = PlayerType::red;
 	player_state = PlayerState::alive;
+	get_point = FALSE;
 
 	 LoadDivGraph("Resource/image/player1.png",3,3,1,32,48, player_img);
 	 LoadDivGraph("Resource/image/player2.png", 3, 3, 1, 32, 48, player_img2);
@@ -27,10 +28,14 @@ Player::~Player() {
 }
 
 void Player::Update() {
+	
 	PadDelay();
 	ActionCheck();
 	CheckPlayerState();
 	Jump();
+
+	//if(“–‚½‚Á‚½‚È‚ç)get_point = TRUE;
+	//else get_point = FALSE;
 
 }
 

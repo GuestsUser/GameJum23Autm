@@ -31,6 +31,7 @@ private:
 	
 	float jump_power;
 	bool jump_flg;
+	bool get_point;
 
 public:
 	Player();
@@ -44,6 +45,7 @@ public:
 	void Switch();
 	void Anim();
 	void CheckPlayerState();
+	bool GetPoint() { return get_point; }
 
 PlayerType GetPlayerType();
 int GetPlayerState();
