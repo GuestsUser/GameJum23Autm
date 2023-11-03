@@ -24,6 +24,7 @@
     <ClCompile Include="Code\OriginMath.cpp" />
     <ClCompile Include="Code\SceneManager.cpp" />
     <ClCompile Include="Code\Scene\Game.cpp" />
+    <ClCompile Include="Code\Scene\Score.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Charactor\Charactor.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="Code\SceneManager.h" />
     <ClInclude Include="Code\Scene\Scene.h" />
     <ClInclude Include="Code\Scene\Game.h" />
+    <ClInclude Include="Code\Scene\Score.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
