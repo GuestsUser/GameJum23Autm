@@ -48,7 +48,11 @@ public:
 
 	void DestroyAllObjects();	//	全てのオブジェクトを削除する
 
-	void SortBasedOnPriority();
+	void SortBasedOnPriority();	
+
+	void StopUpdateAllObjects();
+
+	void BeginUpdateAllObjects();
 
 private:
 	Scene* next; //シーン遷移する場合次シーン実体、そのままの場合自身、ウィンドウを閉じる場合nullptrが入る

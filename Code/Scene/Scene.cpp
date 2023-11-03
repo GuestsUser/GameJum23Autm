@@ -11,7 +11,10 @@ void Scene::Update()
 {
 	for (int i = 0; i < scene_objects.size(); i++) 
 	{
-		scene_objects[i]->Update();
+		if(scene_objects[i]->GetIsActive() == true)
+		{
+			scene_objects[i]->Update();
+		}
 	}
 }
 
@@ -63,4 +66,20 @@ void Scene::DestroyAllObjects()
 void Scene::SortBasedOnPriority()
 {
 	QuickSort(scene_objects, 0, (scene_objects.size() - 1));
+}
+
+void Scene::StopUpdateAllObjects()
+{
+	for (int i = 0; i < scene_objects.size(); i++)
+	{
+		scene_objects[i]->SetIsActive(true);
+	}
+}
+
+void Scene::BeginUpdateAllObjects()
+{
+	for (int i = 0; i < scene_objects.size(); i++)
+	{
+		scene_objects[i]->SetIsActive(false);
+	}
 }
