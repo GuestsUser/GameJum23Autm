@@ -33,6 +33,7 @@ private:
 	bool jump_flg;
 	bool deth_flg;
 	bool hit;
+	int* score;
 
 public:
 	Player();

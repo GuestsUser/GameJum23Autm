@@ -5,7 +5,7 @@ class ShotGenerator;
 class SimpleAnimation;
 class GameStart;
 class GameOver;
-
+class Player;
 enum class GameState
 {
 	GameStart
@@ -29,6 +29,7 @@ private:
 	GameOver* game_over;
 	int wait_count;
 	ShotGenerator* shot_generator;
+	Player* player;
 
 	int stage_image;
 	int BGM;

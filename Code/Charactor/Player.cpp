@@ -1,5 +1,6 @@
 #include"Player.h"
 #include "Shoot.h"
+#include"../Worldval.h"
 
 
 Player::Player() {
@@ -12,6 +13,9 @@ Player::Player() {
 
 	player_color = Color::BLUE;
 	player2_color = Color::RED;
+
+	score=WorldVal::Get<int>("score");//ƒXƒRƒA‚ðŽæ“¾;
+	*score = 0;
 
 	frame_count = 0;
 	press = 0;
@@ -119,9 +123,10 @@ void Player::HitCheck() {
 	Shoot* shoot = dynamic_cast<Shoot*>(collision->HitCheck());
 	Shoot* shoot2 = dynamic_cast<Shoot*>(collision2->HitCheck());
 	if (shoot != nullptr) {
-		Color hit_color = shoot->GetColor();
+		Color hit_color = shoot->GetShootColor();
 		if (player_color == hit_color) {
 			hit = true;
+			*score += 1;
 		}
 		else {
 			hit = false;
@@ -130,7 +135,7 @@ void Player::HitCheck() {
 			
 	}
 	if (shoot2 != nullptr) {
-		Color hit_color = shoot->GetColor();
+		Color hit_color = shoot->GetShootColor();
 		if (player2_color == hit_color) {
 			hit = true;
 		}
