@@ -5,7 +5,7 @@
 Ui::Ui()
 {
 	score = 0;
-	high_score = *WorldVal::Get<int>("highscore");//ハイスコアを入れる
+	high_score = *WorldVal::Get<int>("highscore");//ハイスコアを取得
 	SetFontSize(30);
 }
 
@@ -18,9 +18,8 @@ Ui::~Ui()
 	}
 }
 
-void Ui::Update(int score)
+void Ui::Update()
 {
-	this->score = score;
 	if (score > high_score)high_score = score;//スコアがハイスコアを越えていたらハイスコアを更新
 }
 
