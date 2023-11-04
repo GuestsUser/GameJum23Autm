@@ -27,7 +27,9 @@ public:
 	~Shoot();	//デストラクタ
 
 	void SetSpeed(float speed);		//スピード値の設定
+
 	void SetBoxColor(Color color_);	//ブロックの色の設定
+	Color GetShootColor();
 
 	void Update();					//描画以外の更新に関する処理
 	void Draw();					//描画に関する処理
