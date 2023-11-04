@@ -15,6 +15,7 @@ Game::Game()
 
 	StopUpdateAllObjects();
 	game_start = CreateObject<GameStart>(Vector3());
+	player = CreateObject<Player>(Vector3(300, 400, 0));
 }
 
 Game::~Game()

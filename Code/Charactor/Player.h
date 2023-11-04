@@ -16,6 +16,7 @@ enum class PlayerState {
 class Player :public Charactor {
 private:
 	Collision* collision;
+	Collision* collision2;
 	Player2* player2;
 
 	PlayerState player_state;
@@ -43,7 +44,8 @@ public:
 	void Switch();
 	void Anim();
 	void CheckPlayerState();
-	bool GetScore() { return score; }
+	int GetScore() { return score; }
+	void HitCeck();
 
 
 int GetPlayerState();

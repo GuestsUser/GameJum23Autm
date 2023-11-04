@@ -1,10 +1,11 @@
 #include"Player.h"
-
+#include "Shoot.h"
 
 
 Player::Player() {
 	
-	collision = new Collision(this, Vector3(32), Vector3(16));
+	collision = new Collision(this, Vector3(32,48,0), Vector3(0));
+	collision2 = new Collision(player2, Vector3(32, 48, 0), Vector3(0));
 
 	this->EditPosition().SetXYZ(300, 400, 0);
 	player2 = new Player2();
@@ -36,7 +37,7 @@ void Player::Update() {
 	ActionCheck();
 	CheckPlayerState();
 	Jump();
-
+	
 	//if(“–‚½‚Á‚½‚È‚ç)get_point = TRUE;
 	//else get_point = FALSE;
 
@@ -111,5 +112,10 @@ void Player::Anim() {
 void Player::CheckPlayerState() {
 	if (jump_flg == true)player_state = PlayerState::jump;
 	if (jump_flg == false)player_state = PlayerState::alive;
-	
+	//if ()player_state = PlayerState::deth;
+}
+
+void Player::HitCeck() {
+	Shoot* shoot = dynamic_cast<Shoot*>(collision->HitCheck());
+	collision->HitCheck();
 }
