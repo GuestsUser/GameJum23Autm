@@ -25,10 +25,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetWindowText("1ボタン"); //画面タイトル設定
 	SetGraphMode(WINDOW_X, WINDOW_Y, 32); //画面モードの設定
 	SetBackgroundColor(0, 0, 0); //画面の背景色の設定
-	SetDrawScreen(DX_SCREEN_BACK);
 
 	if (DxLib_Init() == -1) { return -1; }		//初期化と異常が認められた場合の終了
 
+	SetDrawScreen(DX_SCREEN_BACK);
 
 	SoundManager::GetInstance();
 	WorldVal::SetUp();
