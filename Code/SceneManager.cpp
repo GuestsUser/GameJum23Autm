@@ -1,17 +1,19 @@
 #include "SceneManager.h"
 #include "./Scene/Scene.h"
 #include "SceneAccessor.h"
+#include "SoundManager/SoundManager.h"
 
 SceneManager::SceneManager(Scene* ini)
 	:run(ini)
 {
 	SceneAccessor::Initialize(ini);
 	accessor_insctance = SceneAccessor::GetInstance();
+	SoundManager::GetInstance();
 }
 
 SceneManager::~SceneManager()
 {
-
+	SoundManager::DeleteThis();
 }
 
 bool SceneManager::Update() {
