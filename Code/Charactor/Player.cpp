@@ -127,9 +127,10 @@ void Player::HitCheck() {
 		if (player_color == hit_color) {
 			hit = true;
 			*score += 1;
+
 		}
 		else {
-			hit = false;
+			hit = true;
 			deth_flg = true;
 		}
 			
@@ -141,9 +142,10 @@ void Player::HitCheck() {
 			*score += 1;
 		}
 		else {
-			hit = false;
+			hit = true;
 			deth_flg = true;
 		}
 
 	}
+	if (shoot == nullptr)hit = false;
 }
