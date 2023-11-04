@@ -23,7 +23,7 @@ void Title::Update()
 void Title::Draw()
 {
 	DrawBox(0, 0, 960, 480, GetColor(255, 255, 255), TRUE);
-	//LoadGraph("Resouce/image/ashiato_pink.png", TRUE);
+	//LoadGraph("C:PG/GameJum23Autm/Resouce/image/ashiato_pink.png", TRUE);
 	
 	SetFontSize(100);
 	DrawString(140, 100, "ONE BUTTON MAN", GetColor(0, 0, 255));

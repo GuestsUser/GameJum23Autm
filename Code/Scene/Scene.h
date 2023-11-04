@@ -20,7 +20,7 @@ public:
 	Scene* GetNext() { return next; } //次シーンの取得
 
 	template <class T>
-	T* CreateObject(const Vector3& position)
+	T* CreateObject(const Vector3& position , int in_draw_priority = 99)
 	{
 		//	GameObjectの生成
 		T* new_instance = new T();
@@ -36,13 +36,23 @@ public:
 		//	GameObjectの登録
 		scene_objects.push_back(new_object);
 
+		//	初期設定
+		new_object->EditPosition() = position;
+		new_object->SetDrawPriority(in_draw_priority);
+
 		return new_instance;
 
 	}
 
-	void DestroyObject(Charactor* object);
+	void DestroyObject(Charactor* object);	//	オブジェクトをポインタ指定で削除する
 
-	void DestroyAllObjects();
+	void DestroyAllObjects();	//	全てのオブジェクトを削除する
+
+	void SortBasedOnPriority();	
+
+	void StopUpdateAllObjects();
+
+	void BeginUpdateAllObjects();
 
 private:
 	Scene* next; //シーン遷移する場合次シーン実体、そのままの場合自身、ウィンドウを閉じる場合nullptrが入る

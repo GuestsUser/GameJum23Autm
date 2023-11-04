@@ -1,6 +1,7 @@
 #pragma once
-#include "Scene.h"
 #include <vector>
+#include "Scene.h"
+class Scene;
 
 class SceneAccessor
 {
@@ -16,7 +17,7 @@ public:
 
 	Scene* GetCurrentScene()
 	{
-		return GetCurrentScene();
+		return active_scene;
 	}
 
 private:

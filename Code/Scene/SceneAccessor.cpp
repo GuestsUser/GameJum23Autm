@@ -1,4 +1,5 @@
 #include "SceneAccessor.h"
+
 SceneAccessor* SceneAccessor::instance = nullptr;
 
 SceneAccessor::SceneAccessor(Scene* _active_scene)
