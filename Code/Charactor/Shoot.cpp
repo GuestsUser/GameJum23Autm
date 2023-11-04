@@ -7,6 +7,9 @@ Shoot::Shoot()//コンストラクタ
 
 	shoot_max_speed = 4.f;		//Boxの移動速度
 
+	shoot_blue = LoadGraph("Resource/image/blue_shoot");
+	shoot_red = LoadGraph("Resource/image/red_shoot");
+
 	box_flg = true;
 }
 Shoot::~Shoot()//デストラクタ
@@ -35,7 +38,6 @@ void Shoot::Draw()
 	{	
 		//シアンのボックスを描画
 		DrawBox(box_left_x, box_left_y, box_right_x, box_right_y, 0x00ffff, TRUE);
-		DrawGraph(box_left_x,box_left_y,)
 	}
 	if ((box_flg == TRUE) && (color == Color::RED))
 	{
