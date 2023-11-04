@@ -3,13 +3,12 @@
 
 
 Player::Player() {
-	vector = new Vector3();
-	vector2 = new Vector3();
+	
+	this->EditPosition().SetXYZ(300, 400, 0);
+	player2 = new Player2();
+	player2->EditPosition().SetXYZ(500, 400, 0);
 
-	collision = new Collision(collision->HitCheck(), vector->GetY(), vector->GetX());
 
-	vector->SetXYZ(300, 400, 0);
-	vector2->SetXYZ(500, 400, 0);
 	frame_count = 0;
 	press = 0;
 	jump_power = JUMP_POWER;
@@ -22,7 +21,7 @@ Player::Player() {
 }
 
 Player::~Player() {
-	delete vector, vector2;
+	delete this, player2;
 	for (int i = 0; i < 3; i++) {
 		DeleteGraph(player_img[i]);
 		DeleteGraph(player_img2[i]);
@@ -43,8 +42,8 @@ void Player::Update() {
 
 void Player::Draw() {
 	
-	DrawGraph(vector->GetX(), vector->GetY(), player_img[GetPlayerState()], TRUE);
-	DrawGraph(vector2->GetX(), vector2->GetY(), player_img2[GetPlayerState()], TRUE);
+	DrawGraph(this->EditPosition().GetX(), this->EditPosition().GetY(), player_img[GetPlayerState()], TRUE);
+	DrawGraph(player2->EditPosition().GetX(), player2->EditPosition().GetY(), player_img2[GetPlayerState()], TRUE);
 	
 }
 
@@ -52,15 +51,15 @@ void Player::Jump() {
 	
 
 	if (jump_flg == true) {
-		vector->SetY(vector->GetY() - jump_power);
-		vector2->SetY(vector->GetY());
+		this->EditPosition().SetY((this->EditPosition().GetY() - jump_power));
+		player2->EditPosition().SetY(this->EditPosition().GetY());
 		jump_power -= 0.5f;
 	}
-	if (vector->GetY() > GROUND) {
+	if (this->EditPosition().GetY() > GROUND) {
 		jump_flg = false;
 		jump_power = JUMP_POWER;
-		vector->SetY(GROUND);
-		vector2->SetY(GROUND);
+		this->EditPosition().SetY(GROUND);
+		player2->EditPosition().SetY(GROUND);
 	}
 
 }
@@ -89,12 +88,12 @@ void Player::ActionCheck() {
 void Player::Switch() {
 	float keep_x, keep_y;
 
-	keep_x = vector->GetX();
-	keep_y = vector->GetY();
-	vector->SetX(vector2->GetX());
-	vector->SetY(vector2->GetY());
-	vector2->SetX(keep_x);
-	vector2->SetY(keep_y);
+	keep_x = this->EditPosition().GetX();
+	keep_y = this->EditPosition().GetY();
+	this->EditPosition().SetX(player2->EditPosition().GetX());
+	this->EditPosition().SetY(player2->EditPosition().GetY());
+	player2->EditPosition().SetX(keep_x);
+	player2->EditPosition().SetY(keep_y);
 }
 
 int Player::GetPlayerState() {

@@ -1,6 +1,7 @@
 #include"Charactor.h"
 #include"Dxlib.h"
 #include"Collision.h"
+#include"Charactor/Player2.h"
 
 #define JUMP_POWER  10.0f
 #define GROUND 400
@@ -17,6 +18,7 @@ private:
 	Vector3* vector;
 	Vector3* vector2;
 	Collision* collision;
+	Player2* player2;
 
 	PlayerState player_state;
 	Color color;
