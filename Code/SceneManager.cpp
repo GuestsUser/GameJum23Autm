@@ -1,17 +1,19 @@
 #include "SceneManager.h"
 #include "./Scene/Scene.h"
 #include "SceneAccessor.h"
+#include "Controller.h"
 
 SceneManager::SceneManager(Scene* ini)
 	:run(ini)
 {
 	SceneAccessor::Initialize(ini);
 	accessor_insctance = SceneAccessor::GetInstance();
+	controller = new Controller();
 }
 
 SceneManager::~SceneManager()
 {
-
+	delete controller;
 }
 
 bool SceneManager::Update() {
@@ -27,6 +29,7 @@ bool SceneManager::Update() {
 	while (true) { //移行後のシーンはupdateの呼び出しを行わない仕様
 		run->Update(); //update実行
 		Scene* next = run->GetNext(); //次シーンの取得
+		controller->Update();
 		if (run == next) { break; } //継続だったらループ抜け
 
 		delete run; //移行を命令されたら現在シーンの削除

@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Title.h"
 
+#include "Controller.h"
 Title::Title()
 {
 	
@@ -14,7 +15,7 @@ Title::~Title()
 
 void Title::Update()
 {
-	if (CheckHitKey(KEY_INPUT_A) != 0)
+	if (Controller::OnInputA())
 	{
 		SetNext(new Game());
 	}
