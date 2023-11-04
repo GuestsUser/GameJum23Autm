@@ -40,10 +40,7 @@ Shoot::Shoot()					//コンストラクタ
 }
 Shoot::~Shoot()//デストラクタ
 {
-	if (ball_delete == TRUE)
-	{
-		delete ball_collision;
-	}
+	delete ball_collision;
 }
 void Shoot::Update()
 {
@@ -56,7 +53,6 @@ void Shoot::Update()
 	{
 		box_flg = FALSE;
 		ball_alpha -= int(255 / 10);
-		ball_delete = TRUE;
 	}
 }
 void Shoot::Draw()
