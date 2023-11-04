@@ -1,3 +1,4 @@
+#pragma once
 #include"Charactor.h"
 #include"Dxlib.h"
 #include"Collision.h"
