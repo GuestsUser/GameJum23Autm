@@ -1,3 +1,4 @@
+#pragma once
 #include"Charactor.h"
 #include"Dxlib.h"
 #include"Collision.h"
@@ -35,6 +36,8 @@ private:
 	bool hit;
 	bool anim_end_flg;
 	int* score;
+
+	int jump_se;
 
 public:
 	Player();

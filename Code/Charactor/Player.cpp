@@ -1,5 +1,6 @@
 #include"Player.h"
 #include "Shoot.h"
+#include "SoundManager/SoundManager.h"
 #include"../Worldval.h"
 #include "SceneAccessor.h"
 
@@ -25,6 +26,8 @@ Player::Player() {
 	hit = false;
 	player_state = PlayerState::alive;
 	
+	jump_se = SoundManager::GetSE("Jump");
+
 	 LoadDivGraph("Resource/image/player1.png",3,3,1,32,48, player_img);
 	 LoadDivGraph("Resource/image/player2.png", 3, 3, 1, 32, 48, player_img2);
 }
@@ -83,7 +86,14 @@ void Player::PadDelay() {
 
 void Player::ActionCheck() {
 	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_A) == 0 && frame_count <= 30) {
-		if (press <= 5 && press > 0)jump_flg = true;
+		if (press <= 5 && press > 0)
+		{
+			if (jump_flg != true)
+			{
+				SoundManager::PlaySE(jump_se);
+			}
+			jump_flg = true; 
+		}
 		else if (press > 5)Switch();                                          //ˆÊ’uŒðŠ·‚Ìˆ—‚ð’Ç‰Á‚·‚é
 		press = 0;
 	}
@@ -135,7 +145,7 @@ void Player::HitCheck() {
 >>>>>>> Stashed changes
 		}
 		else {
-			hit = false;
+			hit = true;
 			deth_flg = true;
 		}
 			
@@ -148,9 +158,10 @@ void Player::HitCheck() {
 			//SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(shoot2);
 		}
 		else {
-			hit = false;
+			hit = true;
 			deth_flg = true;
 		}
 
 	}
+	if (shoot == nullptr)hit = false;
 }

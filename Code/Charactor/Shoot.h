@@ -1,5 +1,6 @@
 #pragma once
 #include "Charactor.h"
+#include "Player.h"
 #include "DxLib.h"
 #include "Collision.h"
 
@@ -27,6 +28,7 @@ private:
 
 	Color color;		//弾の色の識別
 	Collision* ball_collision;
+	Player* player;
 
 public:
 	Shoot();	//コンストラクタ
