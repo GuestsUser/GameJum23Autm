@@ -1,6 +1,7 @@
 #include"Player.h"
 #include "Shoot.h"
 #include"../Worldval.h"
+#include "SceneAccessor.h"
 
 
 Player::Player() {
@@ -15,7 +16,6 @@ Player::Player() {
 	player2_color = Color::RED;
 
 	score=WorldVal::Get<int>("score");//ƒXƒRƒA‚ðŽæ“¾;
-	*score = 0;
 
 	frame_count = 0;
 	press = 0;
@@ -128,6 +128,11 @@ void Player::HitCheck() {
 		if (player_color == hit_color) {
 			hit = true;
 			*score += 1;
+<<<<<<< Updated upstream
+=======
+			//SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(shoot);
+
+>>>>>>> Stashed changes
 		}
 		else {
 			hit = false;
@@ -140,6 +145,7 @@ void Player::HitCheck() {
 		if (player2_color == hit_color) {
 			hit = true;
 			*score += 1;
+			//SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(shoot2);
 		}
 		else {
 			hit = false;
