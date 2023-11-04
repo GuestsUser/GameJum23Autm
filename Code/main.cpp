@@ -14,6 +14,7 @@
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); //デバッグ表示を可能にする
+	SetAlwaysRunFlag(true);
 	ChangeWindowMode(true);
 
 	int fps = 1000000 / FPS; //割る値を変えると1秒間に行う処理回数を変更できる
@@ -44,7 +45,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		{
 			now = GetNowHiPerformanceCount(); //現在時刻の取得
 			if (now - old > fps) { //前フレームの現在時刻との差が実行タイミングになっていた場合ゲーム処理、描写の実行
-				old = now - (now - old - fps); //差が実行タイミング以上だった場合そのままoldに現在時刻を入れると切り捨てられてしまうのでoldから実行タイミング超過分を引く事で超過分を加味した形にする
+				old = now; //差が実行タイミング以上だった場合そのままoldに現在時刻を入れると切り捨てられてしまうのでoldから実行タイミング超過分を引く事で超過分を加味した形にする
 				ClearDrawScreen(); //画面の初期化
 				if (!scm->Update()) { break; } //ウィンドウを閉じる指示を出されてたら終了
 				scm->Draw(); //画面描写
