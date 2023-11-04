@@ -29,6 +29,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	WorldVal::SetUp();
 	WorldVal::Set("highscore", new int(0));
+	WorldVal::Set("score", new int(0));
 	SceneManager* scm = new SceneManager(new Title()); //セレクト画面が完成したから最初に実行するシーンはタイトルに固定、其々のシーンに飛ばす処理はScene_Select.cppのswitch文を確認
 	
 
