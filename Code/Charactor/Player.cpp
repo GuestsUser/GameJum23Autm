@@ -4,9 +4,9 @@
 
 
 Player::Player() {
-	this->EditPosition().SetXYZ(300, 400, 0);
+	this->EditPosition().SetXYZ(500, 400, 0);
 	player2 = new Player2();
-	player2->EditPosition().SetXYZ(500, 400, 0);
+	player2->EditPosition().SetXYZ(540, 400, 0);
 
 	collision = new Collision(this, Vector3(32, 48, 0), Vector3(0));
 	collision2 = new Collision(player2, Vector3(32, 48, 0), Vector3(0));
@@ -82,8 +82,8 @@ void Player::PadDelay() {
 
 void Player::ActionCheck() {
 	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_A) == 0 && frame_count <= 30) {
-		if (press <= 10 && press > 0)jump_flg = true;
-		else if (press > 10)Switch();                                          //ˆÊ’uŒğŠ·‚Ìˆ—‚ğ’Ç‰Á‚·‚é
+		if (press <= 5 && press > 0)jump_flg = true;
+		else if (press > 5)Switch();                                          //ˆÊ’uŒğŠ·‚Ìˆ—‚ğ’Ç‰Á‚·‚é
 		press = 0;
 	}
 	else {//‰Ÿ‚³‚ê‚Ä‚éŠÔ‚Ìˆ—
