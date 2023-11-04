@@ -20,7 +20,8 @@ private:
 	Player2* player2;
 
 	PlayerState player_state;
-	Color color;
+	Color player_color;
+	Color player2_color;
 
 	int player_img[3];
 	int player_img2[3];
@@ -30,7 +31,8 @@ private:
 	
 	float jump_power;
 	bool jump_flg;
-	int score;
+	bool deth_flg;
+	bool hit;
 
 public:
 	Player();
@@ -44,8 +46,8 @@ public:
 	void Switch();
 	void Anim();
 	void CheckPlayerState();
-	int GetScore() { return score; }
-	void HitCeck();
+	bool GetHit() { return hit; }
+	void HitCheck();
 
 
 int GetPlayerState();

@@ -3,22 +3,24 @@
 
 
 Player::Player() {
-	
-	collision = new Collision(this, Vector3(32,48,0), Vector3(0));
-	collision2 = new Collision(player2, Vector3(32, 48, 0), Vector3(0));
-
 	this->EditPosition().SetXYZ(300, 400, 0);
 	player2 = new Player2();
 	player2->EditPosition().SetXYZ(500, 400, 0);
 
+	collision = new Collision(this, Vector3(32, 48, 0), Vector3(0));
+	collision2 = new Collision(player2, Vector3(32, 48, 0), Vector3(0));
+
+	player_color = Color::BLUE;
+	player2_color = Color::RED;
 
 	frame_count = 0;
 	press = 0;
 	jump_power = JUMP_POWER;
 	jump_flg = false;
+	deth_flg = false;
+	hit = false;
 	player_state = PlayerState::alive;
-	score = 0;
-
+	
 	 LoadDivGraph("Resource/image/player1.png",3,3,1,32,48, player_img);
 	 LoadDivGraph("Resource/image/player2.png", 3, 3, 1, 32, 48, player_img2);
 }
@@ -36,11 +38,9 @@ void Player::Update() {
 	PadDelay();
 	ActionCheck();
 	CheckPlayerState();
+	HitCheck();
 	Jump();
 	
-	//if(“–‚½‚Á‚½‚È‚ç)get_point = TRUE;
-	//else get_point = FALSE;
-
 }
 
 void Player::Draw() {
@@ -112,10 +112,32 @@ void Player::Anim() {
 void Player::CheckPlayerState() {
 	if (jump_flg == true)player_state = PlayerState::jump;
 	if (jump_flg == false)player_state = PlayerState::alive;
-	//if ()player_state = PlayerState::deth;
+	if (deth_flg == true)player_state = PlayerState::deth;
 }
 
-void Player::HitCeck() {
+void Player::HitCheck() {
 	Shoot* shoot = dynamic_cast<Shoot*>(collision->HitCheck());
-	collision->HitCheck();
+	Shoot* shoot2 = dynamic_cast<Shoot*>(collision2->HitCheck());
+	if (shoot != nullptr) {
+		Color hit_color = shoot->GetColor();
+		if (player_color == hit_color) {
+			hit = true;
+		}
+		else {
+			hit = false;
+			deth_flg = true;
+		}
+			
+	}
+	if (shoot2 != nullptr) {
+		Color hit_color = shoot->GetColor();
+		if (player2_color == hit_color) {
+			hit = true;
+		}
+		else {
+			hit = false;
+			deth_flg = true;
+		}
+
+	}
 }
