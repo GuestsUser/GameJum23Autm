@@ -30,7 +30,8 @@ Player::Player() {
 }
 
 Player::~Player() {
-	
+	delete collision, collision2;
+	delete player2;
 	for (int i = 0; i < 3; i++) {
 		DeleteGraph(player_img[i]);
 		DeleteGraph(player_img2[i]);
