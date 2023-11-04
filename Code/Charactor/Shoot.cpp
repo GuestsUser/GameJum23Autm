@@ -1,4 +1,23 @@
 #include "Shoot.h"
+#include "SceneAccessor.h"
+
+void ImageMemory(int& handle, const char* fail_name)
+{
+	try
+	{
+		handle = LoadGraph(fail_name);
+		if (handle == -1)
+		{
+			throw fail_name;
+		}
+	}
+	catch (const char& err)
+	{
+		printf("%dがありません", err);
+	}
+}
+
+
 
 Shoot::Shoot()//コンストラクタ
 {
@@ -7,10 +26,12 @@ Shoot::Shoot()//コンストラクタ
 
 	shoot_max_speed = 4.f;		//Boxの移動速度
 
-	shoot_blue = LoadGraph("Resource/image/blue_shoot");
-	shoot_red = LoadGraph("Resource/image/red_shoot");
-
-	box_flg = true;
+	ImageMemory(shoot_blue, "Resource/image/blue_shoot.png");
+	ImageMemory(shoot_red, "Resource/image/red_shoot.png");
+	ImageMemory(shoot_hit_blue, "Resource/image/hit_blue_shoot.png");
+	ImageMemory(shoot_hit_red, "Resource/image/hit_red_shoot.png");
+	
+	box_flg = TRUE;
 }
 Shoot::~Shoot()//デストラクタ
 {
@@ -24,7 +45,7 @@ void Shoot::Update()
 	if (((shoot_speed < 0) && (EditPosition().GetX() <= (960.f / 2.f)))
 		|| ((shoot_speed > 0) && (EditPosition().GetX() >= (960.f / 2.f))))
 	{
-		box_flg = false;
+		box_flg = FALSE;
 	}
 }
 void Shoot::Draw()
@@ -35,14 +56,19 @@ void Shoot::Draw()
 	float box_right_y = (EditPosition().GetY() + box_y_half);
 
 	if ((box_flg == TRUE) && (color == Color::BLUE))
-	{	
+	{
 		//シアンのボックスを描画
-		DrawBox(box_left_x, box_left_y, box_right_x, box_right_y, 0x00ffff, TRUE);
+		DrawGraphF(box_left_x, box_left_y, shoot_blue, TRUE);
 	}
 	if ((box_flg == TRUE) && (color == Color::RED))
 	{
 		//マゼンタのボックスの描画
-		DrawBox(box_left_x, box_left_y, box_right_x, box_right_y, 0xff00ff, TRUE);
+		DrawGraphF(box_left_x, box_left_y, shoot_red, FALSE);
+	}
+	if ((box_flg == FALSE) && (color == Color::BLUE))
+	{
+		DrawGraphF(box_left_x, box_left_y, shoot_hit_blue, TRUE);
+		SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(this);
 	}
 }
 void Shoot::SetSpeed(float speed)
@@ -56,4 +82,8 @@ void Shoot::SetSpeed(float speed)
 void Shoot::SetBoxColor(Color color_)
 {
 	color = color_;
+}
+Color Shoot::GetShootColor()
+{
+	return color;
 }
