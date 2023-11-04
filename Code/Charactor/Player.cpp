@@ -4,6 +4,8 @@
 
 Player::Player() {
 	
+	collision = new Collision(this, Vector3(32), Vector3(16));
+
 	this->EditPosition().SetXYZ(300, 400, 0);
 	player2 = new Player2();
 	player2->EditPosition().SetXYZ(500, 400, 0);
@@ -14,7 +16,7 @@ Player::Player() {
 	jump_power = JUMP_POWER;
 	jump_flg = false;
 	player_state = PlayerState::alive;
-	get_point = FALSE;
+	score = 0;
 
 	 LoadDivGraph("Resource/image/player1.png",3,3,1,32,48, player_img);
 	 LoadDivGraph("Resource/image/player2.png", 3, 3, 1, 32, 48, player_img2);
@@ -109,5 +111,5 @@ void Player::Anim() {
 void Player::CheckPlayerState() {
 	if (jump_flg == true)player_state = PlayerState::jump;
 	if (jump_flg == false)player_state = PlayerState::alive;
-	if (collision->HitCheck() != nullptr)player_state = PlayerState::deth;
+	
 }
