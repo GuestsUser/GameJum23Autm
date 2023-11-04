@@ -59,24 +59,24 @@ void Game::Update()
 		}
 		break;
 	case GameState::Playing:
-		/*
-		* if(Player‚ª€‚ñ‚¾‚ç)
-		* {
-		*		state = GameState::PlayerDying;
-		*		StopUpdateAllObjects();
-		*		player->SetIsActive(true)		
-		* }
-		*/
+		
+		if (player->GetPlayerState() == 1)
+		 {
+				state = GameState::GameOver;
+				StopUpdateAllObjects();
+				player->SetIsActive(true);
+		 }
+		
 		break;
 	case GameState::PlayerDying:
-		/*
-		* if(Player‚Ì€–Sˆ—‚ªI‚í‚Á‚½‚ç)
-		* {
-		*		state = GameState::GameOver;
-		*		StopUpdateAllObjects();
-		*		game_over = CreateObject<GameOver>(Vector3());
-		* }
-		*/
+		
+		/*if(player->GetAnimEnd()==true)
+		 {
+				state = GameState::GameOver;
+				StopUpdateAllObjects();
+				game_over = CreateObject<GameOver>(Vector3());
+		 }*/
+		
 		break;
 	case GameState::GameOver:
 		if (game_over != nullptr)
@@ -93,6 +93,7 @@ void Game::Update()
 			{
 				//	debug mouse input left
 				SetNext(new Title());
+				state = GameState::GameStart;
 			}
 		}
 		break;

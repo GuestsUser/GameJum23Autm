@@ -30,7 +30,7 @@ Player::Player() {
 }
 
 Player::~Player() {
-	delete this, player2;
+	
 	for (int i = 0; i < 3; i++) {
 		DeleteGraph(player_img[i]);
 		DeleteGraph(player_img2[i]);
@@ -41,8 +41,8 @@ void Player::Update() {
 	
 	PadDelay();
 	ActionCheck();
-	CheckPlayerState();
 	HitCheck();
+	CheckPlayerState();
 	Jump();
 	
 }
