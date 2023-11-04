@@ -11,7 +11,7 @@ public:
 	void AddScore(bool point);
 
 private:
-	int score;
-	int high_score;
+	int* score;
+	int* high_score;
 };
 

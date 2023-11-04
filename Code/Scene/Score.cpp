@@ -3,11 +3,10 @@
 #include"ConstVal.h"
 #include"../Worldval.h"
 
-Score::Score(int score)
+Score::Score()
 {
-	this->score = score; //現在のスコアを入れる
-	highscore = *WorldVal::Get<int>("highscore");//ハイスコアを入れる
-
+	score = WorldVal::Get<int>("score"); //現在のスコアを入れる
+	high_score = WorldVal::Get<int>("highscore");//ハイスコアを入れる
 	count = 0;
 	SetFontSize(50);
 }
@@ -18,13 +17,12 @@ void Score::Update()
 	{
 		SetNext(nullptr);
 	}
-
 	if (++count > FPS)count = 0;
 }
 
 void Score::Draw()
 {
-	DrawFormatString(345, 100, 0xffffff, "スコア　%03d", score);
-	DrawFormatString(290, 200, 0xffffff, "ハイスコア　%03d", highscore);
+	DrawFormatString(345, 100, 0xffffff, "スコア　%03d", *score);
+	DrawFormatString(290, 200, 0xffffff, "ハイスコア　%03d", *high_score);
 	if(count > (FPS / 2))DrawString(270, 300, "Aボタンでタイトル", 0xffffff);
 }
