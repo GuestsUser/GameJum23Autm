@@ -4,6 +4,7 @@
 
 #include "ShotGenerator.h"
 #include "Player.h"
+#include "Ui.h"
 #include "SimpleAnimation.h"
 
 Game::Game()
@@ -11,6 +12,7 @@ Game::Game()
 	,wait_count(0)
 {
 	shot_generator = CreateObject<ShotGenerator>(Vector3());
+	CreateObject<Ui>(Vector3());
 
 
 	StopUpdateAllObjects();
