@@ -4,27 +4,30 @@
 
 Ui::Ui()
 {
-	score = 0;
-	high_score = *WorldVal::Get<int>("highscore");//ハイスコアを入れる
+	score = WorldVal::Get<int>("score");//スコアを取得;
+	*score = 0;
+	high_score = WorldVal::Get<int>("highscore");//ハイスコアを取得
 	SetFontSize(30);
 }
 
 Ui::~Ui()
 {
-	if (score > high_score)//スコアがハイスコアを越えていたら
+}
+
+void Ui::AddScore(bool point)
+{
+	if (point)
 	{
-		WorldVal::Del("highscore");//ハイスコアを消す
-		WorldVal::Set("highscore", new int(score));//新しいハイスコアを登録
+		if(++*score > 999)*score = 999;
 	}
 }
 
-void Ui::Update(int score)
+void Ui::Update()
 {
-	this->score = score;
-	if (score > high_score)high_score = score;//スコアがハイスコアを越えていたらハイスコアを更新
+	if (*score > *high_score)*high_score = *score;//スコアがハイスコアを越えていたらハイスコアを更新
 }
 
 void Ui::Draw()
 {
-	DrawFormatString(160, 20, 0xffffff, "スコア　:　%03d　　　　　ハイスコア　:　%03d", score,high_score);
+	DrawFormatString(160, 20, 0xffffff, "スコア　:　%03d　　　　　ハイスコア　:　%03d", *score, *high_score);
 }

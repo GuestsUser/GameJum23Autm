@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "SoundManager/SoundManager.h"
 
+#include "Controller.h"
 Title::Title()
 {
 	Title_Image = LoadGraph("Resource/image/Title.png");
@@ -22,7 +23,7 @@ void Title::Update()
 	SoundManager::PlayBGM(Title_BGM);
 
 	//"A"ƒL[‚ª‰Ÿ‚³‚ê‚½‚©‚Ç‚¤‚©
-	if (CheckHitKey(KEY_INPUT_A) != 0)
+	if (Controller::OnInputA())
 	{
 		//SE‚ÌÄ¶
 		SoundManager::PlaySE(Title_SE);

@@ -10,6 +10,7 @@
 #include "Title.h"
 #include "Game.h"
 #include "Worldval.h"
+#include "SoundManager/SoundManager.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); //デバッグ表示を可能にする
@@ -31,6 +32,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SoundManager::GetInstance();
 	WorldVal::SetUp();
 	WorldVal::Set("highscore", new int(0));
+	WorldVal::Set("score", new int(0));
+	SoundManager::GetInstance();
 	SceneManager* scm = new SceneManager(new Title()); //セレクト画面が完成したから最初に実行するシーンはタイトルに固定、其々のシーンに飛ばす処理はScene_Select.cppのswitch文を確認
 	
 

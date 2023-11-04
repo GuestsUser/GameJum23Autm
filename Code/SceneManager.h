@@ -1,10 +1,12 @@
 #pragma once
 class SceneAccessor;
 class Scene;
+class Controller;
 
 class SceneManager { //シーン管理用クラス、メインに一つ作ってUpdateとDrawを呼び出す事で使用する
 	Scene* run; //実行するシーン実体が入っている
 	SceneAccessor* accessor_insctance;
+	Controller* controller;
 public:
 	SceneManager(Scene* ini); //最初に読み込みたいシーンのインスタンスを引数に入れる
 	~SceneManager();
