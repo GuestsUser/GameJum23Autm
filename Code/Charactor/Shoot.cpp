@@ -19,7 +19,9 @@ void ImageMemory(int& handle, const char* fail_name)
 
 
 
-Shoot::Shoot()//コンストラクタ
+Shoot::Shoot()					//コンストラクタ
+	:ball_alpha(255)
+	,ball_delete(FALSE)
 {
 	box_x_half = 16.f;			//Boxの横座標の半径
 	box_y_half = 24.f;			//Boxの縦座標の半径
@@ -37,7 +39,7 @@ Shoot::Shoot()//コンストラクタ
 }
 Shoot::~Shoot()//デストラクタ
 {
-
+	
 }
 void Shoot::Update()
 {
@@ -48,6 +50,11 @@ void Shoot::Update()
 		|| ((shoot_speed > 0) && (EditPosition().GetX() >= (960.f / 2.f))))
 	{
 		box_flg = FALSE;
+		ball_alpha -= int(255 / 10);
+		if (ball_alpha < 0)
+		{
+			ball_delete = TRUE;
+		}
 	}
 }
 void Shoot::Draw()

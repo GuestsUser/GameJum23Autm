@@ -21,6 +21,10 @@ private:
 	int shoot_hit_blue;	//青の弾のヒット画像
 	int shoot_hit_red;	//赤の弾のヒット画像
 
+	int ball_alpha;		//ボールの透明度
+
+	int ball_delete;
+
 	Color color;		//弾の色の識別
 	Collision* ball_collision;
 
