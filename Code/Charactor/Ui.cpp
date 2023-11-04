@@ -20,7 +20,11 @@ Ui::~Ui()
 
 void Ui::AddScore(bool point)
 {
-	if (point)score++;
+	if (point)
+	{
+		if(++score > 999)score = 999;
+	}
+
 }
 
 void Ui::Update()
