@@ -8,7 +8,6 @@ SceneManager::SceneManager(Scene* ini)
 {
 	SceneAccessor::Initialize(ini);
 	accessor_insctance = SceneAccessor::GetInstance();
-	SoundManager::GetInstance();
 }
 
 SceneManager::~SceneManager()
