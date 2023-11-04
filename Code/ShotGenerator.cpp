@@ -7,21 +7,23 @@
 
 #include "ConstVal.h"
 
-ShotGenerator::ShotGenerator() :count(0), spawTime(30) {
+ShotGenerator::ShotGenerator() :count(0), spawTime(60), highLevelSpan(6) {
 	baseSpeed = WINDOW_X / 2 / 150; //画面端から画面中央まで150フレームで到達するスピード
 	edit = SceneAccessor::GetInstance();
 }
 
 void ShotGenerator::Update() {
-	if (count < spawTime) { //スポーンタイミングに達していない場合
-		++count;
+	++count;
+
+	if (count % spawTime != 0) { //スポーンタイミングではない場合
 		return;
 	}
-	
-	count = 0; //ここにこれればスポーンタイミング、カウントリセット
 
+	//ここまで来れればスポーンタイミングになっている
 	Place placeMode = (Place)GetRand((int)Place::len - 1); //配置形式の作成
-	Type typeMode = (Type)GetRand((int)Type::len - 1);
+	Type typeMode = Type::normal;
+
+	if ((count / spawTime) % highLevelSpan == 0) { typeMode = (Type)GetRand((int)Type::len - 1); } //ハイレベルのタイミングであればType抽選
 
 	if (placeMode == Place::normal) {
 		ShotGenerat(Place::left, typeMode);
