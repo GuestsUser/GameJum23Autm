@@ -18,6 +18,11 @@ Ui::~Ui()
 	}
 }
 
+void Ui::AddScore(bool point)
+{
+	if (point)score++;
+}
+
 void Ui::Update()
 {
 	if (score > high_score)high_score = score;//スコアがハイスコアを越えていたらハイスコアを更新
