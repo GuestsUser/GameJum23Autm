@@ -51,8 +51,7 @@ void Shoot::Update()
 
 	EditPosition().SetX(EditPosition().GetX() + shoot_speed);
 	if (((shoot_speed < 0) && (EditPosition().GetX() <= (960.f / 2.f)))
-		|| ((shoot_speed > 0) && (EditPosition().GetX() >= (960.f / 2.f)))
-		|| player->GetHit() == true)
+		|| ((shoot_speed > 0) && (EditPosition().GetX() >= (960.f / 2.f))))
 	{
 		box_flg = FALSE;
 		ball_alpha -= int(255 / 10);

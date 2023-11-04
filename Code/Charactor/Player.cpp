@@ -6,7 +6,6 @@
 
 
 Player::Player() {
-	this->EditPosition().SetXYZ(500, 400, 0);
 	player2 = new Player2();
 	player2->EditPosition().SetXYZ(540, 400, 0);
 
@@ -135,14 +134,10 @@ void Player::HitCheck() {
 	Shoot* shoot2 = dynamic_cast<Shoot*>(collision2->HitCheck());
 	if (shoot != nullptr) {
 		Color hit_color = shoot->GetShootColor();
+			SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(shoot);
 		if (player_color == hit_color) {
 			hit = true;
 			*score += 1;
-<<<<<<< Updated upstream
-=======
-			//SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(shoot);
-
->>>>>>> Stashed changes
 		}
 		else {
 			hit = true;
@@ -152,10 +147,10 @@ void Player::HitCheck() {
 	}
 	if (shoot2 != nullptr) {
 		Color hit_color = shoot2->GetShootColor();
+			SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(shoot2);
 		if (player2_color == hit_color) {
 			hit = true;
 			*score += 1;
-			//SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(shoot2);
 		}
 		else {
 			hit = true;
@@ -164,4 +159,5 @@ void Player::HitCheck() {
 
 	}
 	if (shoot == nullptr)hit = false;
+	if (shoot2 == nullptr)hit = false;
 }
