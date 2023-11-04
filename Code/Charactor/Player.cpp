@@ -8,8 +8,8 @@ Player::Player() {
 	player2 = new Player2();
 	player2->EditPosition().SetXYZ(540, 400, 0);
 
-	collision = new Collision(this, Vector3(32, 48, 0), Vector3(0));
-	collision2 = new Collision(player2, Vector3(32, 48, 0), Vector3(0));
+	collision = new Collision(this, Vector3(16, 24, 0), Vector3(16, 24, 0));
+	collision2 = new Collision(player2, Vector3(16, 24, 0), Vector3(16, 24, 0));
 
 	player_color = Color::BLUE;
 	player2_color = Color::RED;
@@ -135,9 +135,10 @@ void Player::HitCheck() {
 			
 	}
 	if (shoot2 != nullptr) {
-		Color hit_color = shoot->GetShootColor();
+		Color hit_color = shoot2->GetShootColor();
 		if (player2_color == hit_color) {
 			hit = true;
+			*score += 1;
 		}
 		else {
 			hit = false;

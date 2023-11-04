@@ -37,7 +37,7 @@ Shoot::Shoot()//コンストラクタ
 }
 Shoot::~Shoot()//デストラクタ
 {
-
+	delete ball_collision;
 }
 void Shoot::Update()
 {
