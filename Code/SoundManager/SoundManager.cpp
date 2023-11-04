@@ -30,6 +30,7 @@ SoundManager* SoundManager::GetInstance()
 */
 void SoundManager::DeleteThis()
 {
+	InitSoundMem();
 	delete instance;
 	instance = nullptr;
 }
