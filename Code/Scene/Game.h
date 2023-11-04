@@ -4,7 +4,8 @@
 class ShotGenerator;
 class SimpleAnimation;
 class GameStart;
-
+class GameOver;
+class Player;
 enum class GameState
 {
 	GameStart
@@ -21,9 +22,15 @@ public:
 	void Update()override;
 	void Draw()override;
 
+
 private:
 	GameState state;
 	GameStart* game_start;
+	GameOver* game_over;
 	int wait_count;
 	ShotGenerator* shot_generator;
+	Player* player;
+
+	int stage_image;
+	int BGM;
 };
