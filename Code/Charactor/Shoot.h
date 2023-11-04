@@ -1,6 +1,7 @@
 #pragma once
 #include "Charactor.h"
 #include "DxLib.h"
+#include "Collision.h"
 
 #define CAMERA_CENTER_X 480
 class Shoot :public Charactor
@@ -21,6 +22,7 @@ private:
 	int shoot_hit_red;	//赤の弾のヒット画像
 
 	Color color;		//弾の色の識別
+	Collision* ball_collision;
 
 public:
 	Shoot();	//コンストラクタ
