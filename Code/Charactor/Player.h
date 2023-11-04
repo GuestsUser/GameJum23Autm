@@ -37,6 +37,8 @@ private:
 	bool anim_end_flg;
 	int* score;
 
+	int jump_se;
+
 public:
 	Player();
 	~Player();
