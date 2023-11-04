@@ -35,6 +35,7 @@ Shoot::Shoot()					//コンストラクタ
 	
 	ball_collision = new Collision(this,Vector3(15.5f,15.f),Vector3(15.5f,15.f));
 
+	player = new Player();
 	box_flg = TRUE;
 }
 Shoot::~Shoot()//デストラクタ
@@ -50,14 +51,12 @@ void Shoot::Update()
 
 	EditPosition().SetX(EditPosition().GetX() + shoot_speed);
 	if (((shoot_speed < 0) && (EditPosition().GetX() <= (960.f / 2.f)))
-		|| ((shoot_speed > 0) && (EditPosition().GetX() >= (960.f / 2.f))))
+		|| ((shoot_speed > 0) && (EditPosition().GetX() >= (960.f / 2.f)))
+		|| player->GetHit() == true)
 	{
 		box_flg = FALSE;
 		ball_alpha -= int(255 / 10);
-		if (ball_alpha < 0)
-		{
-			ball_delete = TRUE;
-		}
+		ball_delete = TRUE;
 	}
 }
 void Shoot::Draw()
@@ -75,7 +74,7 @@ void Shoot::Draw()
 	if ((box_flg == TRUE) && (color == Color::RED))
 	{
 		//マゼンタのボックスの描画
-		DrawGraphF(box_left_x, box_left_y, shoot_red, FALSE);
+		DrawGraphF(box_left_x, box_left_y, shoot_red, TRUE);
 	}
 	if ((box_flg == FALSE) && (color == Color::BLUE))
 	{
