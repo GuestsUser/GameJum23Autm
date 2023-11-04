@@ -19,7 +19,9 @@ void ImageMemory(int& handle, const char* fail_name)
 
 
 
-Shoot::Shoot()//コンストラクタ
+Shoot::Shoot()					//コンストラクタ
+	:ball_alpha(255)
+	,ball_delete(FALSE)
 {
 	box_x_half = 16.f;			//Boxの横座標の半径
 	box_y_half = 24.f;			//Boxの縦座標の半径
@@ -31,11 +33,16 @@ Shoot::Shoot()//コンストラクタ
 	ImageMemory(shoot_hit_blue, "Resource/image/hit_blue_shoot.png");
 	ImageMemory(shoot_hit_red, "Resource/image/hit_red_shoot.png");
 	
+	ball_collision = new Collision(this,Vector3(15.5f,15.f),Vector3(15.5f,15.f));
+
 	box_flg = TRUE;
 }
 Shoot::~Shoot()//デストラクタ
 {
-
+	if (ball_delete == TRUE)
+	{
+		delete ball_collision;
+	}
 }
 void Shoot::Update()
 {
@@ -46,6 +53,11 @@ void Shoot::Update()
 		|| ((shoot_speed > 0) && (EditPosition().GetX() >= (960.f / 2.f))))
 	{
 		box_flg = FALSE;
+		ball_alpha -= int(255 / 10);
+		if (ball_alpha < 0)
+		{
+			ball_delete = TRUE;
+		}
 	}
 }
 void Shoot::Draw()
@@ -68,6 +80,11 @@ void Shoot::Draw()
 	if ((box_flg == FALSE) && (color == Color::BLUE))
 	{
 		DrawGraphF(box_left_x, box_left_y, shoot_hit_blue, TRUE);
+		SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(this);
+	}
+	if ((box_flg == FALSE) && (color == Color::RED))
+	{
+		DrawGraphF(box_left_x, box_left_y, shoot_hit_red, TRUE);
 		SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(this);
 	}
 }
