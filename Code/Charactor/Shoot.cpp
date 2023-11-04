@@ -31,6 +31,8 @@ Shoot::Shoot()//コンストラクタ
 	ImageMemory(shoot_hit_blue, "Resource/image/hit_blue_shoot.png");
 	ImageMemory(shoot_hit_red, "Resource/image/hit_red_shoot.png");
 	
+	ball_collision = new Collision(this,Vector3(15.5f,15.f),Vector3(15.5f,15.f));
+
 	box_flg = TRUE;
 }
 Shoot::~Shoot()//デストラクタ
@@ -68,6 +70,11 @@ void Shoot::Draw()
 	if ((box_flg == FALSE) && (color == Color::BLUE))
 	{
 		DrawGraphF(box_left_x, box_left_y, shoot_hit_blue, TRUE);
+		SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(this);
+	}
+	if ((box_flg == FALSE) && (color == Color::RED))
+	{
+		DrawGraphF(box_left_x, box_left_y, shoot_hit_red, TRUE);
 		SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(this);
 	}
 }
