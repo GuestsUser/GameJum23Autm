@@ -18,6 +18,8 @@ Charactor* Collision::HitCheck() {
 	for (auto itr : list) {
 		Vector3 targetPos= itr->parent->ReadPosition() + itr->relativePos; //判定対象のrelativePos反映版
 
+		if (itr == this) { continue; } //自分自身を判定対象外に
+
 		if (worldPos.GetX() + size.GetX() <= targetPos.GetX() - itr->size.GetX()) { continue; } //其々のコリジョンの重なりがない場合continue
 		if (worldPos.GetX() - size.GetX() >= targetPos.GetX() + itr->size.GetX()) { continue; }
 		if (worldPos.GetY() + size.GetY() <= targetPos.GetY() - itr->size.GetY()) { continue; }

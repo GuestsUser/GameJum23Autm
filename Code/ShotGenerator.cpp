@@ -36,8 +36,8 @@ void ShotGenerator::ShotGenerat(Place place, Type type) { //Ç±Ç±Ç…èëÇ¢ÇƒÇ¢ÇÈêîíl
 	Vector3 position = Vector3();
 	float speed = 1;
 
-	position.SetY(WINDOW_Y - 64);
-	if (type == Type::up) { position.SetY(64); }
+	position.SetY(430);
+	if (type == Type::up) { position.SetY(360); }
 
 	if (type == Type::highSpeed) { speed = 2; }
 	if (type == Type::lowSpeed) { speed = 0.5; }
