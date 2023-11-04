@@ -64,6 +64,7 @@ void Game::Update()
 		 {
 				state = GameState::GameOver;
 				StopUpdateAllObjects();
+				game_over = CreateObject<GameOver>(Vector3());
 				player->SetIsActive(true);
 		 }
 		
