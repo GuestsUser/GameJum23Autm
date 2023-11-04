@@ -2,6 +2,7 @@
 #include "./Scene/Scene.h"
 #include "SceneAccessor.h"
 #include "Controller.h"
+#include "SoundManager/SoundManager.h"
 
 SceneManager::SceneManager(Scene* ini)
 	:run(ini)
@@ -13,6 +14,7 @@ SceneManager::SceneManager(Scene* ini)
 
 SceneManager::~SceneManager()
 {
+	SoundManager::DeleteThis();
 	delete controller;
 }
 

@@ -9,6 +9,7 @@ class ShotGenerator :public Charactor {
 
 	int count; //経過時間記録
 	int spawTime; //出現タイミング
+	int highLevelSpan; //normal以外のtypeを出現させる抽選を行うタイミング
 	float baseSpeed; //速度の基準値
 
 	SceneAccessor* edit;

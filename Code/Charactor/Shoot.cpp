@@ -1,5 +1,23 @@
 #include "Shoot.h"
 
+void ImageMemory(int& handle, const char* fail_name)
+{
+	try
+	{
+		handle = LoadGraph(fail_name);
+		if (handle == -1)
+		{
+			throw fail_name;
+		}
+	}
+	catch (const char& err)
+	{
+		printf("%dがありません", err);
+	}
+}
+
+
+
 Shoot::Shoot()//コンストラクタ
 {
 	box_x_half = 16.f;			//Boxの横座標の半径
@@ -7,7 +25,12 @@ Shoot::Shoot()//コンストラクタ
 
 	shoot_max_speed = 4.f;		//Boxの移動速度
 
-	box_flg = true;
+	ImageMemory(shoot_blue, "Resource/image/blue_shoot.png");
+	ImageMemory(shoot_red, "Resource/image/red_shoot.png");
+	ImageMemory(shoot_hit_blue, "Resource/image/hit_blue_shoot.png");
+	ImageMemory(shoot_hit_red, "Resource/image/hit_red_shoot.png");
+	
+	box_flg = TRUE;
 }
 Shoot::~Shoot()//デストラクタ
 {
@@ -18,10 +41,10 @@ void Shoot::Update()
 	EditPosition().GetX();
 
 	EditPosition().SetX(EditPosition().GetX() + shoot_speed);
-	if (((shoot_speed < 0) && (EditPosition().GetX() <= (960 / 2)))
-		|| ((shoot_speed > 0) && (EditPosition().GetX() >= (960 / 2))))
+	if (((shoot_speed < 0) && (EditPosition().GetX() <= (960.f / 2.f)))
+		|| ((shoot_speed > 0) && (EditPosition().GetX() >= (960.f / 2.f))))
 	{
-		box_flg = false;
+		box_flg = FALSE;
 	}
 }
 void Shoot::Draw()
@@ -31,15 +54,15 @@ void Shoot::Draw()
 	float box_right_x = (EditPosition().GetX() + box_x_half);
 	float box_right_y = (EditPosition().GetY() + box_y_half);
 
-	if ((box_flg == true) && (color == Color::BLUE))
-	{	
+	if ((box_flg == TRUE) && (color == Color::BLUE))
+	{
 		//シアンのボックスを描画
-		DrawBox(box_left_x, box_left_y, box_right_x, box_right_y, 0x00ffff, TRUE);
+		DrawGraphF(box_left_x, box_left_y, shoot_blue, TRUE);
 	}
-	if ((box_flg == true) && (color == Color::RED))
+	if ((box_flg == TRUE) && (color == Color::RED))
 	{
 		//マゼンタのボックスの描画
-		DrawBox(box_left_x, box_left_y, box_right_x, box_right_y, 0xff00ff, TRUE);
+		DrawGraphF(box_left_x, box_left_y, shoot_red, FALSE);
 	}
 }
 void Shoot::SetSpeed(float speed)
@@ -53,4 +76,8 @@ void Shoot::SetSpeed(float speed)
 void Shoot::SetBoxColor(Color color_)
 {
 	color = color_;
+}
+Color Shoot::GetShootColor()
+{
+	return color;
 }

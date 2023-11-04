@@ -6,6 +6,7 @@
 class Shoot :public Charactor
 {
 private:
+
 	int box_flg;		//Box表示のOn・Off
 
 	float shoot_max_speed;	//弾の最高速度
@@ -14,13 +15,21 @@ private:
 	float box_x_half;	//BoxのX軸の半径
 	float box_y_half;	//BoxのY軸の半径
 
-	Color color;
+	int shoot_blue;		//青の弾
+	int shoot_red;		//赤の弾
+	int shoot_hit_blue;	//青の弾のヒット画像
+	int shoot_hit_red;	//赤の弾のヒット画像
+
+	Color color;		//弾の色の識別
+
 public:
 	Shoot();	//コンストラクタ
 	~Shoot();	//デストラクタ
 
 	void SetSpeed(float speed);		//スピード値の設定
+
 	void SetBoxColor(Color color_);	//ブロックの色の設定
+	Color GetShootColor();
 
 	void Update();					//描画以外の更新に関する処理
 	void Draw();					//描画に関する処理

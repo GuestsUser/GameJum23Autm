@@ -10,6 +10,7 @@
 
 #include "ShotGenerator.h"
 #include "Player.h"
+#include "Ui.h"
 
 Game::Game()
 	:state(GameState::GameStart)
@@ -20,6 +21,7 @@ Game::Game()
 	,BGM(0)
 {
 	shot_generator = CreateObject<ShotGenerator>(Vector3());
+	CreateObject<Ui>(Vector3());
 	stage_image = LoadGraph("Resource/image/stage.png");
 	BGM = SoundManager::GetBGM("GameMain");
 	SoundManager::PlayBGM(BGM);
