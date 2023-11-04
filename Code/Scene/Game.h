@@ -1,6 +1,17 @@
 #pragma once
 #include "SoundManager/SoundManager.h"
 #include "Scene.h"
+class ShotGenerator;
+class SimpleAnimation;
+class GameStart;
+
+enum class GameState
+{
+	GameStart
+	,Playing
+	,PlayerDying
+	,GameOver
+};
 
 class Game :public Scene { //コンパイル用空クラス
 public:
@@ -11,5 +22,8 @@ public:
 	void Draw()override;
 
 private:
-
+	GameState state;
+	GameStart* game_start;
+	int wait_count;
+	ShotGenerator* shot_generator;
 };
