@@ -33,6 +33,7 @@ private:
 	bool jump_flg;
 	bool deth_flg;
 	bool hit;
+	bool anim_end_flg;
 	int* score;
 
 public:
@@ -49,7 +50,7 @@ public:
 	void CheckPlayerState();
 	bool GetHit() { return hit; }
 	void HitCheck();
-
+	bool GetAnimEnd() { return anim_end_flg; }
 
 int GetPlayerState();
 };

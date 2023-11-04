@@ -30,7 +30,7 @@ Player::Player() {
 }
 
 Player::~Player() {
-	delete this, player2;
+	
 	for (int i = 0; i < 3; i++) {
 		DeleteGraph(player_img[i]);
 		DeleteGraph(player_img2[i]);
@@ -41,8 +41,8 @@ void Player::Update() {
 	
 	PadDelay();
 	ActionCheck();
-	CheckPlayerState();
 	HitCheck();
+	CheckPlayerState();
 	Jump();
 	
 }
@@ -127,9 +127,10 @@ void Player::HitCheck() {
 		if (player_color == hit_color) {
 			hit = true;
 			*score += 1;
+
 		}
 		else {
-			hit = false;
+			hit = true;
 			deth_flg = true;
 		}
 			
@@ -141,9 +142,10 @@ void Player::HitCheck() {
 			*score += 1;
 		}
 		else {
-			hit = false;
+			hit = true;
 			deth_flg = true;
 		}
 
 	}
+	if (shoot == nullptr)hit = false;
 }
