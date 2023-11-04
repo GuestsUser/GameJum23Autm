@@ -28,6 +28,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	if (DxLib_Init() == -1) { return -1; }		//初期化と異常が認められた場合の終了
 
+
+	SoundManager::GetInstance();
 	WorldVal::SetUp();
 	WorldVal::Set("highscore", new int(0));
 	WorldVal::Set("score", new int(0));

@@ -14,14 +14,6 @@ Ui::~Ui()
 {
 }
 
-void Ui::AddScore(bool point)
-{
-	if (point)
-	{
-		if(++*score > 999)*score = 999;
-	}
-}
-
 void Ui::Update()
 {
 	if (*score > *high_score)*high_score = *score;//スコアがハイスコアを越えていたらハイスコアを更新
