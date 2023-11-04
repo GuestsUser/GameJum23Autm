@@ -1,6 +1,9 @@
 #include"Charactor.h"
 #include"Dxlib.h"
 
+#define JUMP_POWER  10.0f
+#define GROUND 400
+
 enum class PlayerType {
 	red,
 	blue,
@@ -9,6 +12,7 @@ enum class PlayerType {
 enum class PlayerState {
 	alive,
 	deth,
+	jump,
 };
 
 class Player :public Charactor {
@@ -19,9 +23,10 @@ private:
 	PlayerType player_type;
 	PlayerState player_state;
 
-	int keep_x, keep_y;
-
-	int fps;
+	int player_img[3];
+	int player_img2[3];
+	
+	int frame_count;
 	int press;
 	
 	float jump_power;
@@ -29,7 +34,7 @@ private:
 
 public:
 	Player();
-	
+	~Player();
 
 	void Update()override;
 	void Draw()override;
@@ -37,7 +42,9 @@ public:
 	void PadDelay(); //コントローラーの連続入力を出来ないようにする
 	void Jump();
 	void Switch();
+	void Anim();
+	void CheckPlayerState();
 
-PlayerType HitPlayerType(int type);
-PlayerState CheckPlayerState(int state);
+PlayerType GetPlayerType();
+int GetPlayerState();
 };

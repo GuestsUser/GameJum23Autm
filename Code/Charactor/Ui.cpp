@@ -18,9 +18,10 @@ Ui::~Ui()
 	}
 }
 
-void Ui::Update()
+void Ui::Update(int score)
 {
-	if (score > high_score)high_score = score;
+	this->score = score;
+	if (score > high_score)high_score = score;//スコアがハイスコアを越えていたらハイスコアを更新
 }
 
 void Ui::Draw()

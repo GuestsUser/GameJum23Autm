@@ -32,3 +32,18 @@ public:
 	static void PlaySE(int handle, bool isSingle = true);		//SEの再生
 };
 
+//	使い方
+/*****************************************
+* constructor
+* {
+*	handle(int) = SoundManager::GetSE("se");
+*		"se"は拡張子無しのファイル名です。
+*		sample.mp3なら	"sample"を指定します。
+* }
+* 
+* 再生するとき
+* SoundManager::PlaySE(handle);
+* Getで取得したハンドルをそのままいれればOKです
+* デフォルトでは毎フレーム呼ばれても再生が終わるまでは2回目以降無視されるようになっています。
+* 連続で鳴らしたいとき、複数鳴らしたいときは isSingleの引数にfalseを指定してください
+******************************************/

@@ -1,4 +1,6 @@
 #include "Scene/Scene.h"
+#include "QuickSort.h"
+#include "SceneAccessor.h"
 
 Scene::~Scene()
 {
@@ -7,17 +9,20 @@ Scene::~Scene()
 
 void Scene::Update()
 {
-	for (auto iterator = scene_objects.begin(); iterator != scene_objects.end(); iterator++)
+	for (int i = 0; i < scene_objects.size(); i++) 
 	{
-		(*iterator)->Update();
+		if(scene_objects[i]->GetIsActive() == true)
+		{
+			scene_objects[i]->Update();
+		}
 	}
 }
 
 void Scene::Draw()
 {
-	for (auto iterator = scene_objects.begin(); iterator != scene_objects.end(); iterator++)
+	for (int i = 0; i < scene_objects.size(); i++)
 	{
-		(*iterator)->Draw();
+		scene_objects[i]->Draw();
 	}
 }
 
@@ -56,4 +61,25 @@ void Scene::DestroyAllObjects()
 		delete (*iterator);
 	}
 	scene_objects.clear();
+}
+
+void Scene::SortBasedOnPriority()
+{
+	QuickSort(scene_objects, 0, (scene_objects.size() - 1));
+}
+
+void Scene::StopUpdateAllObjects()
+{
+	for (int i = 0; i < scene_objects.size(); i++)
+	{
+		scene_objects[i]->SetIsActive(false);
+	}
+}
+
+void Scene::BeginUpdateAllObjects()
+{
+	for (int i = 0; i < scene_objects.size(); i++)
+	{
+		scene_objects[i]->SetIsActive(true);
+	}
 }

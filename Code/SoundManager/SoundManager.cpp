@@ -61,7 +61,7 @@ int SoundManager::GetBGM(const char* bgm_name)
 	{
 		//パスを作成、BGMをロードして返す
 		string path;
-		path = "resource/BGM/" + soundName + ".wav";
+		path = "resource/BGM/" + soundName + ".mp3";
 		return instance->bgm[soundName].handle = LoadSoundMem(path.c_str());
 	}
 }

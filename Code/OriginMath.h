@@ -23,6 +23,10 @@ public:
 		y = gy;
 		z = gz;
 	}
+	void SetXYZ(Vector3 in_pos)
+	{
+		*this = in_pos;
+	}
 
 	Vector3 operator=(const Vector3& r) { //constを返り値に付けるとa=b=cの型の時、b=cの返り値がconstとなり、a=const dで、const指定のない本関数が呼べなくなってしまう都合上非const実装
 		SetXYZ(r.x, r.y, r.z);
