@@ -37,6 +37,5 @@ void GameStart::Update()
 
 void GameStart::Draw()
 {
-	DrawFormatString(0, 0, 0xffffff, "%d", frame_count);
 	anim->Draw();
 }
