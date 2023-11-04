@@ -12,23 +12,35 @@ Title::~Title()
 
 }
 
+//更新処理
 void Title::Update()
 {
+	//BGMの再生
+	
+	//"A"キーが押されたかどうか
 	if (CheckHitKey(KEY_INPUT_A) != 0)
 	{
+		//BGMの停止
+
+		//SEの再生
+
+		//メイン画面への遷移
 		SetNext(new Game());
 	}
+	
+	
 }
 
+//描写処理
 void Title::Draw()
 {
-	DrawBox(0, 0, 960, 480, GetColor(255, 255, 255), TRUE);
-	//LoadGraph("C:PG/GameJum23Autm/Resouce/image/ashiato_pink.png", TRUE);
+	//背景の描写
 	
-	SetFontSize(100);
-	DrawString(140, 100, "ONE BUTTON MAN", GetColor(0, 0, 255));
-	SetFontSize(60);
-	DrawString(300, 320, "PUSH   BUTTON", GetColor(255, 0, 0));
-	DrawString(300, 320, "     A       ", GetColor(255, 0, 0));
+	//タイトルの描画
+	SetFontSize(130);
+	DrawString(15, 100, "ONE BUTTON MAN", GetColor(0, 0, 255));
+	SetFontSize(70);
+	DrawString(250, 340, "push   button", GetColor(255, 0, 0));
+	DrawString(250, 340, "     A       ", GetColor(255, 0, 0));
 
 }
