@@ -1,4 +1,5 @@
 #include "Shoot.h"
+#include "SceneAccessor.h"
 
 void ImageMemory(int& handle, const char* fail_name)
 {
@@ -63,6 +64,11 @@ void Shoot::Draw()
 	{
 		//マゼンタのボックスの描画
 		DrawGraphF(box_left_x, box_left_y, shoot_red, FALSE);
+	}
+	if ((box_flg == FALSE) && (color == Color::BLUE))
+	{
+		DrawGraphF(box_left_x, box_left_y, shoot_hit_blue, TRUE);
+		SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(this);
 	}
 }
 void Shoot::SetSpeed(float speed)

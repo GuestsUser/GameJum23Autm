@@ -25,6 +25,7 @@
     <ClCompile Include="Code\Charactor\Shoot.cpp" />
     <ClCompile Include="Code\Charactor\Ui.cpp" />
     <ClCompile Include="Code\Collision.cpp" />
+    <ClCompile Include="Code\Controller.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\OriginMath.cpp" />
     <ClCompile Include="Code\QuickSort.cpp" />
@@ -49,6 +50,7 @@
     <ClInclude Include="Code\Charactor\Ui.h" />
     <ClInclude Include="Code\Collision.h" />
     <ClInclude Include="Code\ConstVal.h" />
+    <ClInclude Include="Code\Controller.h" />
     <ClInclude Include="Code\OriginMath.h" />
     <ClInclude Include="Code\SceneManager.h" />
     <ClInclude Include="Code\Scene\Scene.h" />
