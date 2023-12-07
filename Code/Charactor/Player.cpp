@@ -1,10 +1,11 @@
 #include"Player.h"
 #include "Shoot.h"
+#include "SoundManager/SoundManager.h"
 #include"../Worldval.h"
+#include "SceneAccessor.h"
 
 
 Player::Player() {
-	this->EditPosition().SetXYZ(500, 400, 0);
 	player2 = new Player2();
 	player2->EditPosition().SetXYZ(540, 400, 0);
 
@@ -15,7 +16,6 @@ Player::Player() {
 	player2_color = Color::RED;
 
 	score=WorldVal::Get<int>("score");//スコアを取得;
-	*score = 0;
 
 	frame_count = 0;
 	press = 0;
@@ -25,6 +25,8 @@ Player::Player() {
 	hit = false;
 	player_state = PlayerState::alive;
 	
+	jump_se = SoundManager::GetSE("Jump");
+
 	 LoadDivGraph("Resource/image/player1.png",3,3,1,32,48, player_img);
 	 LoadDivGraph("Resource/image/player2.png", 3, 3, 1, 32, 48, player_img2);
 }
@@ -83,7 +85,14 @@ void Player::PadDelay() {
 
 void Player::ActionCheck() {
 	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_A) == 0 && frame_count <= 30) {
-		if (press <= 5 && press > 0)jump_flg = true;
+		if (press <= 5 && press > 0)
+		{
+			if (jump_flg != true)
+			{
+				SoundManager::PlaySE(jump_se);
+			}
+			jump_flg = true; 
+		}
 		else if (press > 5)Switch();                                          //位置交換の処理を追加する
 		press = 0;
 	}
@@ -125,10 +134,10 @@ void Player::HitCheck() {
 	Shoot* shoot2 = dynamic_cast<Shoot*>(collision2->HitCheck());
 	if (shoot != nullptr) {
 		Color hit_color = shoot->GetShootColor();
+			SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(shoot);
 		if (player_color == hit_color) {
 			hit = true;
 			*score += 1;
-
 		}
 		else {
 			hit = true;
@@ -138,6 +147,7 @@ void Player::HitCheck() {
 	}
 	if (shoot2 != nullptr) {
 		Color hit_color = shoot2->GetShootColor();
+			SceneAccessor::GetInstance()->GetCurrentScene()->DestroyObject(shoot2);
 		if (player2_color == hit_color) {
 			hit = true;
 			*score += 1;
@@ -149,4 +159,5 @@ void Player::HitCheck() {
 
 	}
 	if (shoot == nullptr)hit = false;
+	if (shoot2 == nullptr)hit = false;
 }

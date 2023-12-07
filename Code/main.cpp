@@ -25,10 +25,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetWindowText("1ボタン"); //画面タイトル設定
 	SetGraphMode(WINDOW_X, WINDOW_Y, 32); //画面モードの設定
 	SetBackgroundColor(0, 0, 0); //画面の背景色の設定
-	SetDrawScreen(DX_SCREEN_BACK);
 
 	if (DxLib_Init() == -1) { return -1; }		//初期化と異常が認められた場合の終了
 
+	SetDrawScreen(DX_SCREEN_BACK);
 
 	SoundManager::GetInstance();
 	WorldVal::SetUp();
@@ -45,7 +45,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		{
 			now = GetNowHiPerformanceCount(); //現在時刻の取得
 			if (now - old > fps) { //前フレームの現在時刻との差が実行タイミングになっていた場合ゲーム処理、描写の実行
-				old = now; //差が実行タイミング以上だった場合そのままoldに現在時刻を入れると切り捨てられてしまうのでoldから実行タイミング超過分を引く事で超過分を加味した形にする
+				old = now - fps; //差が実行タイミング以上だった場合そのままoldに現在時刻を入れると切り捨てられてしまうのでoldから実行タイミング超過分を引く事で超過分を加味した形にする
 				ClearDrawScreen(); //画面の初期化
 				if (!scm->Update()) { break; } //ウィンドウを閉じる指示を出されてたら終了
 				scm->Draw(); //画面描写
